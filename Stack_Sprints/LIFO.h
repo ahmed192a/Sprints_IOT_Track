@@ -10,9 +10,9 @@
 
 #include "stdio.h"
 #include "stdlib.h"
-#define int8_t char
-#define uint8_t unsigned char
-#define uint32_t unsigned long
+typedef char int8_t
+typedef unsigned char uint8_t
+typedef unsigned long uint32_t
 
 //User Configuration
 // select the element type (uint8_t, uint26_t, uint32_t ...)
