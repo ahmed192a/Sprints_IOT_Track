@@ -6,7 +6,10 @@
  */
 #include "timer.h"
 #include "common_macros.h"
+
+// In CASE WE WANT USE INTERRUPT SET THE INTERRUPT MACRO TO 1
 #define INTERRUPT 		0
+
 #define LED				0x04
 void Timer1_INT();
 
