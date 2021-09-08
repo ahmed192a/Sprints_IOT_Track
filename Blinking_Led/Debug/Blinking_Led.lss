@@ -3,41 +3,39 @@ Blinking_Led.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000007fe  00000000  00000000  00000094  2**1
+  0 .text         0000090c  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000002  00800060  000007fe  00000892  2**0
-                  CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000000e  00800062  00800062  00000894  2**0
+  1 .bss          00000013  00800060  00800060  00000980  2**0
                   ALLOC
-  3 .stab         00000b4c  00000000  00000000  00000894  2**2
+  2 .stab         00000c6c  00000000  00000000  00000980  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00000c17  00000000  00000000  000013e0  2**0
+  3 .stabstr      00000ccd  00000000  00000000  000015ec  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
-   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  10:	0c 94 c3 01 	jmp	0x386	; 0x386 <__vector_4>
-  14:	0c 94 90 01 	jmp	0x320	; 0x320 <__vector_5>
-  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  1c:	0c 94 2a 01 	jmp	0x254	; 0x254 <__vector_7>
-  20:	0c 94 5d 01 	jmp	0x2ba	; 0x2ba <__vector_8>
-  24:	0c 94 f7 00 	jmp	0x1ee	; 0x1ee <__vector_9>
-  28:	0c 94 c4 00 	jmp	0x188	; 0x188 <__vector_10>
-  2c:	0c 94 91 00 	jmp	0x122	; 0x122 <__vector_11>
-  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 d2 01 	jmp	0x3a4	; 0x3a4 <__vector_4>
+  14:	0c 94 9f 01 	jmp	0x33e	; 0x33e <__vector_5>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 39 01 	jmp	0x272	; 0x272 <__vector_7>
+  20:	0c 94 6c 01 	jmp	0x2d8	; 0x2d8 <__vector_8>
+  24:	0c 94 06 01 	jmp	0x20c	; 0x20c <__vector_9>
+  28:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <__vector_10>
+  2c:	0c 94 a0 00 	jmp	0x140	; 0x140 <__vector_11>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
 
 00000054 <__ctors_end>:
   54:	11 24       	eor	r1, r1
@@ -47,1238 +45,1412 @@ Disassembly of section .text:
   5c:	de bf       	out	0x3e, r29	; 62
   5e:	cd bf       	out	0x3d, r28	; 61
 
-00000060 <__do_copy_data>:
+00000060 <__do_clear_bss>:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	ee ef       	ldi	r30, 0xFE	; 254
-  68:	f7 e0       	ldi	r31, 0x07	; 7
-  6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
 
-0000006c <.do_copy_data_loop>:
-  6c:	05 90       	lpm	r0, Z+
-  6e:	0d 92       	st	X+, r0
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
 
-00000070 <.do_copy_data_start>:
-  70:	a2 36       	cpi	r26, 0x62	; 98
-  72:	b1 07       	cpc	r27, r17
-  74:	d9 f7       	brne	.-10     	; 0x6c <.do_copy_data_loop>
+0000006a <.do_clear_bss_start>:
+  6a:	a3 37       	cpi	r26, 0x73	; 115
+  6c:	b1 07       	cpc	r27, r17
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 3e 00 	call	0x7c	; 0x7c <main>
+  74:	0c 94 84 04 	jmp	0x908	; 0x908 <_exit>
 
-00000076 <__do_clear_bss>:
-  76:	10 e0       	ldi	r17, 0x00	; 0
-  78:	a2 e6       	ldi	r26, 0x62	; 98
-  7a:	b0 e0       	ldi	r27, 0x00	; 0
-  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-0000007e <.do_clear_bss_loop>:
-  7e:	1d 92       	st	X+, r1
-
-00000080 <.do_clear_bss_start>:
-  80:	a0 37       	cpi	r26, 0x70	; 112
-  82:	b1 07       	cpc	r27, r17
-  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
-  86:	0e 94 49 00 	call	0x92	; 0x92 <main>
-  8a:	0c 94 fd 03 	jmp	0x7fa	; 0x7fa <_exit>
-
-0000008e <__bad_interrupt>:
-  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
-
-00000092 <main>:
+0000007c <main>:
 void Timer1_INT();
 
-volatile uint8_t g_timer1_SecFlag = 0xff;
 Timer_ConfigType timer1_Strut;
 
+
 int main(){
-  92:	df 93       	push	r29
-  94:	cf 93       	push	r28
-  96:	cd b7       	in	r28, 0x3d	; 61
-  98:	de b7       	in	r29, 0x3e	; 62
+  7c:	df 93       	push	r29
+  7e:	cf 93       	push	r28
+  80:	0f 92       	push	r0
+  82:	cd b7       	in	r28, 0x3d	; 61
+  84:	de b7       	in	r29, 0x3e	; 62
 	/* Enable Global Interrupt */
 	SREG |= (1<<7);
-  9a:	af e3       	ldi	r26, 0x3F	; 63
-  9c:	b0 e0       	ldi	r27, 0x00	; 0
-  9e:	ef e3       	ldi	r30, 0x3F	; 63
-  a0:	f0 e0       	ldi	r31, 0x00	; 0
-  a2:	80 81       	ld	r24, Z
-  a4:	80 68       	ori	r24, 0x80	; 128
-  a6:	8c 93       	st	X, r24
+#endif
+
 
 	PORTA_DIR = 0xFF;
-  a8:	ea e3       	ldi	r30, 0x3A	; 58
-  aa:	f0 e0       	ldi	r31, 0x00	; 0
-  ac:	8f ef       	ldi	r24, 0xFF	; 255
-  ae:	80 83       	st	Z, r24
+  86:	ea e3       	ldi	r30, 0x3A	; 58
+  88:	f0 e0       	ldi	r31, 0x00	; 0
+  8a:	8f ef       	ldi	r24, 0xFF	; 255
+  8c:	80 83       	st	Z, r24
 	PORTA_OUT = 0x00;
-  b0:	eb e3       	ldi	r30, 0x3B	; 59
-  b2:	f0 e0       	ldi	r31, 0x00	; 0
-  b4:	10 82       	st	Z, r1
-	/* Timer Structure for timer 1 configurations */
-	/* Configure Timer1 to count for 1 Second*/
+  8e:	eb e3       	ldi	r30, 0x3B	; 59
+  90:	f0 e0       	ldi	r31, 0x00	; 0
+  92:	10 82       	st	Z, r1
+//	timer1_Strut.mode				= CTC_MODE;
+//	timer1_Strut.clock				= F_CPU_1024;
+//	timer1_Strut.initial			= 0;
+//	timer1_Strut.top_count			= 100;
+//	timer1_Strut.interrupt			= FALSE;
+		TCCR1A = (1<<FOC1A) | (1<<FOC1B);	// non PWM
+  94:	ef e4       	ldi	r30, 0x4F	; 79
+  96:	f0 e0       	ldi	r31, 0x00	; 0
+  98:	8c e0       	ldi	r24, 0x0C	; 12
+  9a:	80 83       	st	Z, r24
+		TCCR1B = (1<<WGM12) | F_CPU_256; 	// set the mode to CTC and the prescaler to 256
+  9c:	ee e4       	ldi	r30, 0x4E	; 78
+  9e:	f0 e0       	ldi	r31, 0x00	; 0
+  a0:	8c e0       	ldi	r24, 0x0C	; 12
+  a2:	80 83       	st	Z, r24
+		TCNT1 = 0;	// start from 0
+  a4:	ec e4       	ldi	r30, 0x4C	; 76
+  a6:	f0 e0       	ldi	r31, 0x00	; 0
+  a8:	11 82       	std	Z+1, r1	; 0x01
+  aa:	10 82       	st	Z, r1
+		OCR1A = 200;	// top = 3907
+  ac:	ea e4       	ldi	r30, 0x4A	; 74
+  ae:	f0 e0       	ldi	r31, 0x00	; 0
+  b0:	88 ec       	ldi	r24, 0xC8	; 200
+  b2:	90 e0       	ldi	r25, 0x00	; 0
+  b4:	91 83       	std	Z+1, r25	; 0x01
+  b6:	80 83       	st	Z, r24
+		//TIMSK = (1<<OCIE1A);	// enable timer interrupt
 
-	timer1_Strut.mode				= CTC_MODE_CHANNEL_A;
-  b6:	82 e0       	ldi	r24, 0x02	; 2
-  b8:	80 93 69 00 	sts	0x0069, r24
-	timer1_Strut.compare_output		= NORMAL;
-  bc:	10 92 6a 00 	sts	0x006A, r1
-	timer1_Strut.OutputPin			= NONE;
-  c0:	10 92 6b 00 	sts	0x006B, r1
-	timer1_Strut.clock				= F_CPU_1024;
-  c4:	85 e0       	ldi	r24, 0x05	; 5
-  c6:	80 93 68 00 	sts	0x0068, r24
-	timer1_Strut.initial			= 0;
-  ca:	10 92 6d 00 	sts	0x006D, r1
-  ce:	10 92 6c 00 	sts	0x006C, r1
-	timer1_Strut.compare_value		= 800;
-  d2:	80 e2       	ldi	r24, 0x20	; 32
-  d4:	93 e0       	ldi	r25, 0x03	; 3
-  d6:	90 93 6f 00 	sts	0x006F, r25
-  da:	80 93 6e 00 	sts	0x006E, r24
+#endif
 
 	/* Timer 1 Initialization */
 	TIMER1_init(&timer1_Strut);
-  de:	88 e6       	ldi	r24, 0x68	; 104
-  e0:	90 e0       	ldi	r25, 0x00	; 0
-  e2:	0e 94 74 02 	call	0x4e8	; 0x4e8 <TIMER1_init>
+  b8:	86 e6       	ldi	r24, 0x66	; 102
+  ba:	90 e0       	ldi	r25, 0x00	; 0
+  bc:	0e 94 83 02 	call	0x506	; 0x506 <TIMER1_init>
+//	PORTA_OUT = 0xFF;
 
-	/* CallBack Function for timer 1 CTC Channel A Interrupt Function */
-	Timer1_setCallBack(Timer1_INT);
-  e6:	88 e7       	ldi	r24, 0x78	; 120
-  e8:	90 e0       	ldi	r25, 0x00	; 0
-  ea:	0e 94 d9 03 	call	0x7b2	; 0x7b2 <Timer1_setCallBack>
-  ee:	ff cf       	rjmp	.-2      	; 0xee <main+0x5c>
 
-000000f0 <Timer1_INT>:
+	while(1){
+#if !in
+		while(!TIFR& (1<<OCF1A));
+  c0:	e8 e5       	ldi	r30, 0x58	; 88
+  c2:	f0 e0       	ldi	r31, 0x00	; 0
+  c4:	80 81       	ld	r24, Z
+		TIFR |= 1<<OCF1A;
+  c6:	a8 e5       	ldi	r26, 0x58	; 88
+  c8:	b0 e0       	ldi	r27, 0x00	; 0
+  ca:	e8 e5       	ldi	r30, 0x58	; 88
+  cc:	f0 e0       	ldi	r31, 0x00	; 0
+  ce:	80 81       	ld	r24, Z
+  d0:	80 61       	ori	r24, 0x10	; 16
+  d2:	8c 93       	st	X, r24
+		TOGGLE_BIT(PORTA_OUT,4);
+  d4:	ab e3       	ldi	r26, 0x3B	; 59
+  d6:	b0 e0       	ldi	r27, 0x00	; 0
+  d8:	eb e3       	ldi	r30, 0x3B	; 59
+  da:	f0 e0       	ldi	r31, 0x00	; 0
+  dc:	90 81       	ld	r25, Z
+  de:	80 e1       	ldi	r24, 0x10	; 16
+  e0:	89 27       	eor	r24, r25
+  e2:	8c 93       	st	X, r24
+  e4:	ed cf       	rjmp	.-38     	; 0xc0 <main+0x44>
 
+000000e6 <Timer1_INT>:
+#endif
 	}
 }
 
 
 void Timer1_INT(){
-  f0:	df 93       	push	r29
-  f2:	cf 93       	push	r28
-  f4:	cd b7       	in	r28, 0x3d	; 61
-  f6:	de b7       	in	r29, 0x3e	; 62
+  e6:	df 93       	push	r29
+  e8:	cf 93       	push	r28
+  ea:	cd b7       	in	r28, 0x3d	; 61
+  ec:	de b7       	in	r29, 0x3e	; 62
 
-	//TOGGLE_BIT(PORTA_OUT,4);
-	PORTA_OUT = 0xFF;
-  f8:	eb e3       	ldi	r30, 0x3B	; 59
-  fa:	f0 e0       	ldi	r31, 0x00	; 0
-  fc:	8f ef       	ldi	r24, 0xFF	; 255
-  fe:	80 83       	st	Z, r24
-	timer1_Strut.initial			= 0;
- 100:	10 92 6d 00 	sts	0x006D, r1
- 104:	10 92 6c 00 	sts	0x006C, r1
-	timer1_Strut.compare_value 		= 200;
- 108:	88 ec       	ldi	r24, 0xC8	; 200
- 10a:	90 e0       	ldi	r25, 0x00	; 0
- 10c:	90 93 6f 00 	sts	0x006F, r25
- 110:	80 93 6e 00 	sts	0x006E, r24
+	TOGGLE_BIT(PORTA_OUT,4);
+  ee:	ab e3       	ldi	r26, 0x3B	; 59
+  f0:	b0 e0       	ldi	r27, 0x00	; 0
+  f2:	eb e3       	ldi	r30, 0x3B	; 59
+  f4:	f0 e0       	ldi	r31, 0x00	; 0
+  f6:	90 81       	ld	r25, Z
+  f8:	80 e1       	ldi	r24, 0x10	; 16
+  fa:	89 27       	eor	r24, r25
+  fc:	8c 93       	st	X, r24
+	//PORTA_OUT = 0xFF;
+	timer1_Strut.initial				= 0;
+  fe:	10 92 6c 00 	sts	0x006C, r1
+ 102:	10 92 6b 00 	sts	0x006B, r1
+	if(PORTA_OUT&0x04)
+ 106:	eb e3       	ldi	r30, 0x3B	; 59
+ 108:	f0 e0       	ldi	r31, 0x00	; 0
+ 10a:	80 81       	ld	r24, Z
+ 10c:	88 2f       	mov	r24, r24
+ 10e:	90 e0       	ldi	r25, 0x00	; 0
+ 110:	84 70       	andi	r24, 0x04	; 4
+ 112:	90 70       	andi	r25, 0x00	; 0
+ 114:	00 97       	sbiw	r24, 0x00	; 0
+ 116:	39 f0       	breq	.+14     	; 0x126 <Timer1_INT+0x40>
+		timer1_Strut.top_count 		= 1000;
+ 118:	88 ee       	ldi	r24, 0xE8	; 232
+ 11a:	93 e0       	ldi	r25, 0x03	; 3
+ 11c:	90 93 70 00 	sts	0x0070, r25
+ 120:	80 93 6f 00 	sts	0x006F, r24
+ 124:	06 c0       	rjmp	.+12     	; 0x132 <Timer1_INT+0x4c>
+	else
+		timer1_Strut.top_count		= 2000;
+ 126:	80 ed       	ldi	r24, 0xD0	; 208
+ 128:	97 e0       	ldi	r25, 0x07	; 7
+ 12a:	90 93 70 00 	sts	0x0070, r25
+ 12e:	80 93 6f 00 	sts	0x006F, r24
 	TIMER1_init(&timer1_Strut);
- 114:	88 e6       	ldi	r24, 0x68	; 104
- 116:	90 e0       	ldi	r25, 0x00	; 0
- 118:	0e 94 74 02 	call	0x4e8	; 0x4e8 <TIMER1_init>
-
+ 132:	86 e6       	ldi	r24, 0x66	; 102
+ 134:	90 e0       	ldi	r25, 0x00	; 0
+ 136:	0e 94 83 02 	call	0x506	; 0x506 <TIMER1_init>
 }
- 11c:	cf 91       	pop	r28
- 11e:	df 91       	pop	r29
- 120:	08 95       	ret
+ 13a:	cf 91       	pop	r28
+ 13c:	df 91       	pop	r29
+ 13e:	08 95       	ret
 
-00000122 <__vector_11>:
+00000140 <__vector_11>:
 /*******************************************************************************
  *                       Interrupt Service Routines                            *
  *******************************************************************************/
 
 ISR(TIMER0_OVF_vect)
 {
- 122:	1f 92       	push	r1
- 124:	0f 92       	push	r0
- 126:	0f b6       	in	r0, 0x3f	; 63
- 128:	0f 92       	push	r0
- 12a:	11 24       	eor	r1, r1
- 12c:	2f 93       	push	r18
- 12e:	3f 93       	push	r19
- 130:	4f 93       	push	r20
- 132:	5f 93       	push	r21
- 134:	6f 93       	push	r22
- 136:	7f 93       	push	r23
- 138:	8f 93       	push	r24
- 13a:	9f 93       	push	r25
- 13c:	af 93       	push	r26
- 13e:	bf 93       	push	r27
- 140:	ef 93       	push	r30
- 142:	ff 93       	push	r31
- 144:	df 93       	push	r29
- 146:	cf 93       	push	r28
- 148:	cd b7       	in	r28, 0x3d	; 61
- 14a:	de b7       	in	r29, 0x3e	; 62
+ 140:	1f 92       	push	r1
+ 142:	0f 92       	push	r0
+ 144:	0f b6       	in	r0, 0x3f	; 63
+ 146:	0f 92       	push	r0
+ 148:	11 24       	eor	r1, r1
+ 14a:	2f 93       	push	r18
+ 14c:	3f 93       	push	r19
+ 14e:	4f 93       	push	r20
+ 150:	5f 93       	push	r21
+ 152:	6f 93       	push	r22
+ 154:	7f 93       	push	r23
+ 156:	8f 93       	push	r24
+ 158:	9f 93       	push	r25
+ 15a:	af 93       	push	r26
+ 15c:	bf 93       	push	r27
+ 15e:	ef 93       	push	r30
+ 160:	ff 93       	push	r31
+ 162:	df 93       	push	r29
+ 164:	cf 93       	push	r28
+ 166:	cd b7       	in	r28, 0x3d	; 61
+ 168:	de b7       	in	r29, 0x3e	; 62
 	if(timer0_callBackPtr != NULL_PTR)
- 14c:	80 91 62 00 	lds	r24, 0x0062
- 150:	90 91 63 00 	lds	r25, 0x0063
- 154:	00 97       	sbiw	r24, 0x00	; 0
- 156:	29 f0       	breq	.+10     	; 0x162 <__vector_11+0x40>
+ 16a:	80 91 60 00 	lds	r24, 0x0060
+ 16e:	90 91 61 00 	lds	r25, 0x0061
+ 172:	00 97       	sbiw	r24, 0x00	; 0
+ 174:	29 f0       	breq	.+10     	; 0x180 <__vector_11+0x40>
 	{
 		/* Call the Call Back function in the application after the edge is detected */
 		(*timer0_callBackPtr)();
- 158:	e0 91 62 00 	lds	r30, 0x0062
- 15c:	f0 91 63 00 	lds	r31, 0x0063
- 160:	09 95       	icall
+ 176:	e0 91 60 00 	lds	r30, 0x0060
+ 17a:	f0 91 61 00 	lds	r31, 0x0061
+ 17e:	09 95       	icall
 	}
 }
- 162:	cf 91       	pop	r28
- 164:	df 91       	pop	r29
- 166:	ff 91       	pop	r31
- 168:	ef 91       	pop	r30
- 16a:	bf 91       	pop	r27
- 16c:	af 91       	pop	r26
- 16e:	9f 91       	pop	r25
- 170:	8f 91       	pop	r24
- 172:	7f 91       	pop	r23
- 174:	6f 91       	pop	r22
- 176:	5f 91       	pop	r21
- 178:	4f 91       	pop	r20
- 17a:	3f 91       	pop	r19
- 17c:	2f 91       	pop	r18
- 17e:	0f 90       	pop	r0
- 180:	0f be       	out	0x3f, r0	; 63
- 182:	0f 90       	pop	r0
- 184:	1f 90       	pop	r1
- 186:	18 95       	reti
+ 180:	cf 91       	pop	r28
+ 182:	df 91       	pop	r29
+ 184:	ff 91       	pop	r31
+ 186:	ef 91       	pop	r30
+ 188:	bf 91       	pop	r27
+ 18a:	af 91       	pop	r26
+ 18c:	9f 91       	pop	r25
+ 18e:	8f 91       	pop	r24
+ 190:	7f 91       	pop	r23
+ 192:	6f 91       	pop	r22
+ 194:	5f 91       	pop	r21
+ 196:	4f 91       	pop	r20
+ 198:	3f 91       	pop	r19
+ 19a:	2f 91       	pop	r18
+ 19c:	0f 90       	pop	r0
+ 19e:	0f be       	out	0x3f, r0	; 63
+ 1a0:	0f 90       	pop	r0
+ 1a2:	1f 90       	pop	r1
+ 1a4:	18 95       	reti
 
-00000188 <__vector_10>:
+000001a6 <__vector_10>:
 
 ISR(TIMER0_COMP_vect)
 {
- 188:	1f 92       	push	r1
- 18a:	0f 92       	push	r0
- 18c:	0f b6       	in	r0, 0x3f	; 63
- 18e:	0f 92       	push	r0
- 190:	11 24       	eor	r1, r1
- 192:	2f 93       	push	r18
- 194:	3f 93       	push	r19
- 196:	4f 93       	push	r20
- 198:	5f 93       	push	r21
- 19a:	6f 93       	push	r22
- 19c:	7f 93       	push	r23
- 19e:	8f 93       	push	r24
- 1a0:	9f 93       	push	r25
- 1a2:	af 93       	push	r26
- 1a4:	bf 93       	push	r27
- 1a6:	ef 93       	push	r30
- 1a8:	ff 93       	push	r31
- 1aa:	df 93       	push	r29
- 1ac:	cf 93       	push	r28
- 1ae:	cd b7       	in	r28, 0x3d	; 61
- 1b0:	de b7       	in	r29, 0x3e	; 62
+ 1a6:	1f 92       	push	r1
+ 1a8:	0f 92       	push	r0
+ 1aa:	0f b6       	in	r0, 0x3f	; 63
+ 1ac:	0f 92       	push	r0
+ 1ae:	11 24       	eor	r1, r1
+ 1b0:	2f 93       	push	r18
+ 1b2:	3f 93       	push	r19
+ 1b4:	4f 93       	push	r20
+ 1b6:	5f 93       	push	r21
+ 1b8:	6f 93       	push	r22
+ 1ba:	7f 93       	push	r23
+ 1bc:	8f 93       	push	r24
+ 1be:	9f 93       	push	r25
+ 1c0:	af 93       	push	r26
+ 1c2:	bf 93       	push	r27
+ 1c4:	ef 93       	push	r30
+ 1c6:	ff 93       	push	r31
+ 1c8:	df 93       	push	r29
+ 1ca:	cf 93       	push	r28
+ 1cc:	cd b7       	in	r28, 0x3d	; 61
+ 1ce:	de b7       	in	r29, 0x3e	; 62
 	if(timer0_callBackPtr != NULL_PTR)
- 1b2:	80 91 62 00 	lds	r24, 0x0062
- 1b6:	90 91 63 00 	lds	r25, 0x0063
- 1ba:	00 97       	sbiw	r24, 0x00	; 0
- 1bc:	29 f0       	breq	.+10     	; 0x1c8 <__vector_10+0x40>
+ 1d0:	80 91 60 00 	lds	r24, 0x0060
+ 1d4:	90 91 61 00 	lds	r25, 0x0061
+ 1d8:	00 97       	sbiw	r24, 0x00	; 0
+ 1da:	29 f0       	breq	.+10     	; 0x1e6 <__vector_10+0x40>
 	{
 		/* Call the Call Back function in the application after the edge is detected */
 		(*timer0_callBackPtr)();
- 1be:	e0 91 62 00 	lds	r30, 0x0062
- 1c2:	f0 91 63 00 	lds	r31, 0x0063
- 1c6:	09 95       	icall
+ 1dc:	e0 91 60 00 	lds	r30, 0x0060
+ 1e0:	f0 91 61 00 	lds	r31, 0x0061
+ 1e4:	09 95       	icall
 	}
 }
- 1c8:	cf 91       	pop	r28
- 1ca:	df 91       	pop	r29
- 1cc:	ff 91       	pop	r31
- 1ce:	ef 91       	pop	r30
- 1d0:	bf 91       	pop	r27
- 1d2:	af 91       	pop	r26
- 1d4:	9f 91       	pop	r25
- 1d6:	8f 91       	pop	r24
- 1d8:	7f 91       	pop	r23
- 1da:	6f 91       	pop	r22
- 1dc:	5f 91       	pop	r21
- 1de:	4f 91       	pop	r20
- 1e0:	3f 91       	pop	r19
- 1e2:	2f 91       	pop	r18
- 1e4:	0f 90       	pop	r0
- 1e6:	0f be       	out	0x3f, r0	; 63
- 1e8:	0f 90       	pop	r0
- 1ea:	1f 90       	pop	r1
- 1ec:	18 95       	reti
+ 1e6:	cf 91       	pop	r28
+ 1e8:	df 91       	pop	r29
+ 1ea:	ff 91       	pop	r31
+ 1ec:	ef 91       	pop	r30
+ 1ee:	bf 91       	pop	r27
+ 1f0:	af 91       	pop	r26
+ 1f2:	9f 91       	pop	r25
+ 1f4:	8f 91       	pop	r24
+ 1f6:	7f 91       	pop	r23
+ 1f8:	6f 91       	pop	r22
+ 1fa:	5f 91       	pop	r21
+ 1fc:	4f 91       	pop	r20
+ 1fe:	3f 91       	pop	r19
+ 200:	2f 91       	pop	r18
+ 202:	0f 90       	pop	r0
+ 204:	0f be       	out	0x3f, r0	; 63
+ 206:	0f 90       	pop	r0
+ 208:	1f 90       	pop	r1
+ 20a:	18 95       	reti
 
-000001ee <__vector_9>:
+0000020c <__vector_9>:
 
 ISR(TIMER1_OVF_vect)
 {
- 1ee:	1f 92       	push	r1
- 1f0:	0f 92       	push	r0
- 1f2:	0f b6       	in	r0, 0x3f	; 63
- 1f4:	0f 92       	push	r0
- 1f6:	11 24       	eor	r1, r1
- 1f8:	2f 93       	push	r18
- 1fa:	3f 93       	push	r19
- 1fc:	4f 93       	push	r20
- 1fe:	5f 93       	push	r21
- 200:	6f 93       	push	r22
- 202:	7f 93       	push	r23
- 204:	8f 93       	push	r24
- 206:	9f 93       	push	r25
- 208:	af 93       	push	r26
- 20a:	bf 93       	push	r27
- 20c:	ef 93       	push	r30
- 20e:	ff 93       	push	r31
- 210:	df 93       	push	r29
- 212:	cf 93       	push	r28
- 214:	cd b7       	in	r28, 0x3d	; 61
- 216:	de b7       	in	r29, 0x3e	; 62
+ 20c:	1f 92       	push	r1
+ 20e:	0f 92       	push	r0
+ 210:	0f b6       	in	r0, 0x3f	; 63
+ 212:	0f 92       	push	r0
+ 214:	11 24       	eor	r1, r1
+ 216:	2f 93       	push	r18
+ 218:	3f 93       	push	r19
+ 21a:	4f 93       	push	r20
+ 21c:	5f 93       	push	r21
+ 21e:	6f 93       	push	r22
+ 220:	7f 93       	push	r23
+ 222:	8f 93       	push	r24
+ 224:	9f 93       	push	r25
+ 226:	af 93       	push	r26
+ 228:	bf 93       	push	r27
+ 22a:	ef 93       	push	r30
+ 22c:	ff 93       	push	r31
+ 22e:	df 93       	push	r29
+ 230:	cf 93       	push	r28
+ 232:	cd b7       	in	r28, 0x3d	; 61
+ 234:	de b7       	in	r29, 0x3e	; 62
 	if(timer1_callBackPtr != NULL_PTR)
- 218:	80 91 64 00 	lds	r24, 0x0064
- 21c:	90 91 65 00 	lds	r25, 0x0065
- 220:	00 97       	sbiw	r24, 0x00	; 0
- 222:	29 f0       	breq	.+10     	; 0x22e <__vector_9+0x40>
+ 236:	80 91 62 00 	lds	r24, 0x0062
+ 23a:	90 91 63 00 	lds	r25, 0x0063
+ 23e:	00 97       	sbiw	r24, 0x00	; 0
+ 240:	29 f0       	breq	.+10     	; 0x24c <__vector_9+0x40>
 	{
 		/* Call the Call Back function in the application after the edge is detected */
 		(*timer1_callBackPtr)();
- 224:	e0 91 64 00 	lds	r30, 0x0064
- 228:	f0 91 65 00 	lds	r31, 0x0065
- 22c:	09 95       	icall
+ 242:	e0 91 62 00 	lds	r30, 0x0062
+ 246:	f0 91 63 00 	lds	r31, 0x0063
+ 24a:	09 95       	icall
 	}
 }
- 22e:	cf 91       	pop	r28
- 230:	df 91       	pop	r29
- 232:	ff 91       	pop	r31
- 234:	ef 91       	pop	r30
- 236:	bf 91       	pop	r27
- 238:	af 91       	pop	r26
- 23a:	9f 91       	pop	r25
- 23c:	8f 91       	pop	r24
- 23e:	7f 91       	pop	r23
- 240:	6f 91       	pop	r22
- 242:	5f 91       	pop	r21
- 244:	4f 91       	pop	r20
- 246:	3f 91       	pop	r19
- 248:	2f 91       	pop	r18
- 24a:	0f 90       	pop	r0
- 24c:	0f be       	out	0x3f, r0	; 63
- 24e:	0f 90       	pop	r0
- 250:	1f 90       	pop	r1
- 252:	18 95       	reti
+ 24c:	cf 91       	pop	r28
+ 24e:	df 91       	pop	r29
+ 250:	ff 91       	pop	r31
+ 252:	ef 91       	pop	r30
+ 254:	bf 91       	pop	r27
+ 256:	af 91       	pop	r26
+ 258:	9f 91       	pop	r25
+ 25a:	8f 91       	pop	r24
+ 25c:	7f 91       	pop	r23
+ 25e:	6f 91       	pop	r22
+ 260:	5f 91       	pop	r21
+ 262:	4f 91       	pop	r20
+ 264:	3f 91       	pop	r19
+ 266:	2f 91       	pop	r18
+ 268:	0f 90       	pop	r0
+ 26a:	0f be       	out	0x3f, r0	; 63
+ 26c:	0f 90       	pop	r0
+ 26e:	1f 90       	pop	r1
+ 270:	18 95       	reti
 
-00000254 <__vector_7>:
+00000272 <__vector_7>:
 
 ISR(TIMER1_COMPA_vect)
 {
- 254:	1f 92       	push	r1
- 256:	0f 92       	push	r0
- 258:	0f b6       	in	r0, 0x3f	; 63
- 25a:	0f 92       	push	r0
- 25c:	11 24       	eor	r1, r1
- 25e:	2f 93       	push	r18
- 260:	3f 93       	push	r19
- 262:	4f 93       	push	r20
- 264:	5f 93       	push	r21
- 266:	6f 93       	push	r22
- 268:	7f 93       	push	r23
- 26a:	8f 93       	push	r24
- 26c:	9f 93       	push	r25
- 26e:	af 93       	push	r26
- 270:	bf 93       	push	r27
- 272:	ef 93       	push	r30
- 274:	ff 93       	push	r31
- 276:	df 93       	push	r29
- 278:	cf 93       	push	r28
- 27a:	cd b7       	in	r28, 0x3d	; 61
- 27c:	de b7       	in	r29, 0x3e	; 62
+ 272:	1f 92       	push	r1
+ 274:	0f 92       	push	r0
+ 276:	0f b6       	in	r0, 0x3f	; 63
+ 278:	0f 92       	push	r0
+ 27a:	11 24       	eor	r1, r1
+ 27c:	2f 93       	push	r18
+ 27e:	3f 93       	push	r19
+ 280:	4f 93       	push	r20
+ 282:	5f 93       	push	r21
+ 284:	6f 93       	push	r22
+ 286:	7f 93       	push	r23
+ 288:	8f 93       	push	r24
+ 28a:	9f 93       	push	r25
+ 28c:	af 93       	push	r26
+ 28e:	bf 93       	push	r27
+ 290:	ef 93       	push	r30
+ 292:	ff 93       	push	r31
+ 294:	df 93       	push	r29
+ 296:	cf 93       	push	r28
+ 298:	cd b7       	in	r28, 0x3d	; 61
+ 29a:	de b7       	in	r29, 0x3e	; 62
 	if(timer1_callBackPtr != NULL_PTR)
- 27e:	80 91 64 00 	lds	r24, 0x0064
- 282:	90 91 65 00 	lds	r25, 0x0065
- 286:	00 97       	sbiw	r24, 0x00	; 0
- 288:	29 f0       	breq	.+10     	; 0x294 <__vector_7+0x40>
+ 29c:	80 91 62 00 	lds	r24, 0x0062
+ 2a0:	90 91 63 00 	lds	r25, 0x0063
+ 2a4:	00 97       	sbiw	r24, 0x00	; 0
+ 2a6:	29 f0       	breq	.+10     	; 0x2b2 <__vector_7+0x40>
 	{
 		/* Call the Call Back function in the application after the edge is detected */
 		(*timer1_callBackPtr)();
- 28a:	e0 91 64 00 	lds	r30, 0x0064
- 28e:	f0 91 65 00 	lds	r31, 0x0065
- 292:	09 95       	icall
+ 2a8:	e0 91 62 00 	lds	r30, 0x0062
+ 2ac:	f0 91 63 00 	lds	r31, 0x0063
+ 2b0:	09 95       	icall
 	}
 }
- 294:	cf 91       	pop	r28
- 296:	df 91       	pop	r29
- 298:	ff 91       	pop	r31
- 29a:	ef 91       	pop	r30
- 29c:	bf 91       	pop	r27
- 29e:	af 91       	pop	r26
- 2a0:	9f 91       	pop	r25
- 2a2:	8f 91       	pop	r24
- 2a4:	7f 91       	pop	r23
- 2a6:	6f 91       	pop	r22
- 2a8:	5f 91       	pop	r21
- 2aa:	4f 91       	pop	r20
- 2ac:	3f 91       	pop	r19
- 2ae:	2f 91       	pop	r18
- 2b0:	0f 90       	pop	r0
- 2b2:	0f be       	out	0x3f, r0	; 63
- 2b4:	0f 90       	pop	r0
- 2b6:	1f 90       	pop	r1
- 2b8:	18 95       	reti
+ 2b2:	cf 91       	pop	r28
+ 2b4:	df 91       	pop	r29
+ 2b6:	ff 91       	pop	r31
+ 2b8:	ef 91       	pop	r30
+ 2ba:	bf 91       	pop	r27
+ 2bc:	af 91       	pop	r26
+ 2be:	9f 91       	pop	r25
+ 2c0:	8f 91       	pop	r24
+ 2c2:	7f 91       	pop	r23
+ 2c4:	6f 91       	pop	r22
+ 2c6:	5f 91       	pop	r21
+ 2c8:	4f 91       	pop	r20
+ 2ca:	3f 91       	pop	r19
+ 2cc:	2f 91       	pop	r18
+ 2ce:	0f 90       	pop	r0
+ 2d0:	0f be       	out	0x3f, r0	; 63
+ 2d2:	0f 90       	pop	r0
+ 2d4:	1f 90       	pop	r1
+ 2d6:	18 95       	reti
 
-000002ba <__vector_8>:
+000002d8 <__vector_8>:
 
 ISR(TIMER1_COMPB_vect)
 {
- 2ba:	1f 92       	push	r1
- 2bc:	0f 92       	push	r0
- 2be:	0f b6       	in	r0, 0x3f	; 63
- 2c0:	0f 92       	push	r0
- 2c2:	11 24       	eor	r1, r1
- 2c4:	2f 93       	push	r18
- 2c6:	3f 93       	push	r19
- 2c8:	4f 93       	push	r20
- 2ca:	5f 93       	push	r21
- 2cc:	6f 93       	push	r22
- 2ce:	7f 93       	push	r23
- 2d0:	8f 93       	push	r24
- 2d2:	9f 93       	push	r25
- 2d4:	af 93       	push	r26
- 2d6:	bf 93       	push	r27
- 2d8:	ef 93       	push	r30
- 2da:	ff 93       	push	r31
- 2dc:	df 93       	push	r29
- 2de:	cf 93       	push	r28
- 2e0:	cd b7       	in	r28, 0x3d	; 61
- 2e2:	de b7       	in	r29, 0x3e	; 62
+ 2d8:	1f 92       	push	r1
+ 2da:	0f 92       	push	r0
+ 2dc:	0f b6       	in	r0, 0x3f	; 63
+ 2de:	0f 92       	push	r0
+ 2e0:	11 24       	eor	r1, r1
+ 2e2:	2f 93       	push	r18
+ 2e4:	3f 93       	push	r19
+ 2e6:	4f 93       	push	r20
+ 2e8:	5f 93       	push	r21
+ 2ea:	6f 93       	push	r22
+ 2ec:	7f 93       	push	r23
+ 2ee:	8f 93       	push	r24
+ 2f0:	9f 93       	push	r25
+ 2f2:	af 93       	push	r26
+ 2f4:	bf 93       	push	r27
+ 2f6:	ef 93       	push	r30
+ 2f8:	ff 93       	push	r31
+ 2fa:	df 93       	push	r29
+ 2fc:	cf 93       	push	r28
+ 2fe:	cd b7       	in	r28, 0x3d	; 61
+ 300:	de b7       	in	r29, 0x3e	; 62
 	if(timer1_callBackPtr != NULL_PTR)
- 2e4:	80 91 64 00 	lds	r24, 0x0064
- 2e8:	90 91 65 00 	lds	r25, 0x0065
- 2ec:	00 97       	sbiw	r24, 0x00	; 0
- 2ee:	29 f0       	breq	.+10     	; 0x2fa <__vector_8+0x40>
+ 302:	80 91 62 00 	lds	r24, 0x0062
+ 306:	90 91 63 00 	lds	r25, 0x0063
+ 30a:	00 97       	sbiw	r24, 0x00	; 0
+ 30c:	29 f0       	breq	.+10     	; 0x318 <__vector_8+0x40>
 	{
 		/* Call the Call Back function in the application after the edge is detected */
 		(*timer1_callBackPtr)();
- 2f0:	e0 91 64 00 	lds	r30, 0x0064
- 2f4:	f0 91 65 00 	lds	r31, 0x0065
- 2f8:	09 95       	icall
+ 30e:	e0 91 62 00 	lds	r30, 0x0062
+ 312:	f0 91 63 00 	lds	r31, 0x0063
+ 316:	09 95       	icall
 	}
 }
- 2fa:	cf 91       	pop	r28
- 2fc:	df 91       	pop	r29
- 2fe:	ff 91       	pop	r31
- 300:	ef 91       	pop	r30
- 302:	bf 91       	pop	r27
- 304:	af 91       	pop	r26
- 306:	9f 91       	pop	r25
- 308:	8f 91       	pop	r24
- 30a:	7f 91       	pop	r23
- 30c:	6f 91       	pop	r22
- 30e:	5f 91       	pop	r21
- 310:	4f 91       	pop	r20
- 312:	3f 91       	pop	r19
- 314:	2f 91       	pop	r18
- 316:	0f 90       	pop	r0
- 318:	0f be       	out	0x3f, r0	; 63
- 31a:	0f 90       	pop	r0
- 31c:	1f 90       	pop	r1
- 31e:	18 95       	reti
+ 318:	cf 91       	pop	r28
+ 31a:	df 91       	pop	r29
+ 31c:	ff 91       	pop	r31
+ 31e:	ef 91       	pop	r30
+ 320:	bf 91       	pop	r27
+ 322:	af 91       	pop	r26
+ 324:	9f 91       	pop	r25
+ 326:	8f 91       	pop	r24
+ 328:	7f 91       	pop	r23
+ 32a:	6f 91       	pop	r22
+ 32c:	5f 91       	pop	r21
+ 32e:	4f 91       	pop	r20
+ 330:	3f 91       	pop	r19
+ 332:	2f 91       	pop	r18
+ 334:	0f 90       	pop	r0
+ 336:	0f be       	out	0x3f, r0	; 63
+ 338:	0f 90       	pop	r0
+ 33a:	1f 90       	pop	r1
+ 33c:	18 95       	reti
 
-00000320 <__vector_5>:
+0000033e <__vector_5>:
 
 ISR(TIMER2_OVF_vect)
 {
- 320:	1f 92       	push	r1
- 322:	0f 92       	push	r0
- 324:	0f b6       	in	r0, 0x3f	; 63
- 326:	0f 92       	push	r0
- 328:	11 24       	eor	r1, r1
- 32a:	2f 93       	push	r18
- 32c:	3f 93       	push	r19
- 32e:	4f 93       	push	r20
- 330:	5f 93       	push	r21
- 332:	6f 93       	push	r22
- 334:	7f 93       	push	r23
- 336:	8f 93       	push	r24
- 338:	9f 93       	push	r25
- 33a:	af 93       	push	r26
- 33c:	bf 93       	push	r27
- 33e:	ef 93       	push	r30
- 340:	ff 93       	push	r31
- 342:	df 93       	push	r29
- 344:	cf 93       	push	r28
- 346:	cd b7       	in	r28, 0x3d	; 61
- 348:	de b7       	in	r29, 0x3e	; 62
+ 33e:	1f 92       	push	r1
+ 340:	0f 92       	push	r0
+ 342:	0f b6       	in	r0, 0x3f	; 63
+ 344:	0f 92       	push	r0
+ 346:	11 24       	eor	r1, r1
+ 348:	2f 93       	push	r18
+ 34a:	3f 93       	push	r19
+ 34c:	4f 93       	push	r20
+ 34e:	5f 93       	push	r21
+ 350:	6f 93       	push	r22
+ 352:	7f 93       	push	r23
+ 354:	8f 93       	push	r24
+ 356:	9f 93       	push	r25
+ 358:	af 93       	push	r26
+ 35a:	bf 93       	push	r27
+ 35c:	ef 93       	push	r30
+ 35e:	ff 93       	push	r31
+ 360:	df 93       	push	r29
+ 362:	cf 93       	push	r28
+ 364:	cd b7       	in	r28, 0x3d	; 61
+ 366:	de b7       	in	r29, 0x3e	; 62
 	if(timer2_callBackPtr != NULL_PTR)
- 34a:	80 91 66 00 	lds	r24, 0x0066
- 34e:	90 91 67 00 	lds	r25, 0x0067
- 352:	00 97       	sbiw	r24, 0x00	; 0
- 354:	29 f0       	breq	.+10     	; 0x360 <__vector_5+0x40>
+ 368:	80 91 64 00 	lds	r24, 0x0064
+ 36c:	90 91 65 00 	lds	r25, 0x0065
+ 370:	00 97       	sbiw	r24, 0x00	; 0
+ 372:	29 f0       	breq	.+10     	; 0x37e <__vector_5+0x40>
 	{
 		/* Call the Call Back function in the application after the edge is detected */
 		(*timer2_callBackPtr)();
- 356:	e0 91 66 00 	lds	r30, 0x0066
- 35a:	f0 91 67 00 	lds	r31, 0x0067
- 35e:	09 95       	icall
+ 374:	e0 91 64 00 	lds	r30, 0x0064
+ 378:	f0 91 65 00 	lds	r31, 0x0065
+ 37c:	09 95       	icall
 	}
 }
- 360:	cf 91       	pop	r28
- 362:	df 91       	pop	r29
- 364:	ff 91       	pop	r31
- 366:	ef 91       	pop	r30
- 368:	bf 91       	pop	r27
- 36a:	af 91       	pop	r26
- 36c:	9f 91       	pop	r25
- 36e:	8f 91       	pop	r24
- 370:	7f 91       	pop	r23
- 372:	6f 91       	pop	r22
- 374:	5f 91       	pop	r21
- 376:	4f 91       	pop	r20
- 378:	3f 91       	pop	r19
- 37a:	2f 91       	pop	r18
- 37c:	0f 90       	pop	r0
- 37e:	0f be       	out	0x3f, r0	; 63
- 380:	0f 90       	pop	r0
- 382:	1f 90       	pop	r1
- 384:	18 95       	reti
+ 37e:	cf 91       	pop	r28
+ 380:	df 91       	pop	r29
+ 382:	ff 91       	pop	r31
+ 384:	ef 91       	pop	r30
+ 386:	bf 91       	pop	r27
+ 388:	af 91       	pop	r26
+ 38a:	9f 91       	pop	r25
+ 38c:	8f 91       	pop	r24
+ 38e:	7f 91       	pop	r23
+ 390:	6f 91       	pop	r22
+ 392:	5f 91       	pop	r21
+ 394:	4f 91       	pop	r20
+ 396:	3f 91       	pop	r19
+ 398:	2f 91       	pop	r18
+ 39a:	0f 90       	pop	r0
+ 39c:	0f be       	out	0x3f, r0	; 63
+ 39e:	0f 90       	pop	r0
+ 3a0:	1f 90       	pop	r1
+ 3a2:	18 95       	reti
 
-00000386 <__vector_4>:
+000003a4 <__vector_4>:
 
 ISR(TIMER2_COMP_vect)
 {
- 386:	1f 92       	push	r1
- 388:	0f 92       	push	r0
- 38a:	0f b6       	in	r0, 0x3f	; 63
- 38c:	0f 92       	push	r0
- 38e:	11 24       	eor	r1, r1
- 390:	2f 93       	push	r18
- 392:	3f 93       	push	r19
- 394:	4f 93       	push	r20
- 396:	5f 93       	push	r21
- 398:	6f 93       	push	r22
- 39a:	7f 93       	push	r23
- 39c:	8f 93       	push	r24
- 39e:	9f 93       	push	r25
- 3a0:	af 93       	push	r26
- 3a2:	bf 93       	push	r27
- 3a4:	ef 93       	push	r30
- 3a6:	ff 93       	push	r31
- 3a8:	df 93       	push	r29
- 3aa:	cf 93       	push	r28
- 3ac:	cd b7       	in	r28, 0x3d	; 61
- 3ae:	de b7       	in	r29, 0x3e	; 62
+ 3a4:	1f 92       	push	r1
+ 3a6:	0f 92       	push	r0
+ 3a8:	0f b6       	in	r0, 0x3f	; 63
+ 3aa:	0f 92       	push	r0
+ 3ac:	11 24       	eor	r1, r1
+ 3ae:	2f 93       	push	r18
+ 3b0:	3f 93       	push	r19
+ 3b2:	4f 93       	push	r20
+ 3b4:	5f 93       	push	r21
+ 3b6:	6f 93       	push	r22
+ 3b8:	7f 93       	push	r23
+ 3ba:	8f 93       	push	r24
+ 3bc:	9f 93       	push	r25
+ 3be:	af 93       	push	r26
+ 3c0:	bf 93       	push	r27
+ 3c2:	ef 93       	push	r30
+ 3c4:	ff 93       	push	r31
+ 3c6:	df 93       	push	r29
+ 3c8:	cf 93       	push	r28
+ 3ca:	cd b7       	in	r28, 0x3d	; 61
+ 3cc:	de b7       	in	r29, 0x3e	; 62
 	if(timer2_callBackPtr != NULL_PTR)
- 3b0:	80 91 66 00 	lds	r24, 0x0066
- 3b4:	90 91 67 00 	lds	r25, 0x0067
- 3b8:	00 97       	sbiw	r24, 0x00	; 0
- 3ba:	29 f0       	breq	.+10     	; 0x3c6 <__vector_4+0x40>
+ 3ce:	80 91 64 00 	lds	r24, 0x0064
+ 3d2:	90 91 65 00 	lds	r25, 0x0065
+ 3d6:	00 97       	sbiw	r24, 0x00	; 0
+ 3d8:	29 f0       	breq	.+10     	; 0x3e4 <__vector_4+0x40>
 	{
 		/* Call the Call Back function in the application after the edge is detected */
 		(*timer2_callBackPtr)();
- 3bc:	e0 91 66 00 	lds	r30, 0x0066
- 3c0:	f0 91 67 00 	lds	r31, 0x0067
- 3c4:	09 95       	icall
+ 3da:	e0 91 64 00 	lds	r30, 0x0064
+ 3de:	f0 91 65 00 	lds	r31, 0x0065
+ 3e2:	09 95       	icall
 	}
 }
- 3c6:	cf 91       	pop	r28
- 3c8:	df 91       	pop	r29
- 3ca:	ff 91       	pop	r31
- 3cc:	ef 91       	pop	r30
- 3ce:	bf 91       	pop	r27
- 3d0:	af 91       	pop	r26
- 3d2:	9f 91       	pop	r25
- 3d4:	8f 91       	pop	r24
- 3d6:	7f 91       	pop	r23
- 3d8:	6f 91       	pop	r22
- 3da:	5f 91       	pop	r21
- 3dc:	4f 91       	pop	r20
- 3de:	3f 91       	pop	r19
- 3e0:	2f 91       	pop	r18
- 3e2:	0f 90       	pop	r0
- 3e4:	0f be       	out	0x3f, r0	; 63
- 3e6:	0f 90       	pop	r0
- 3e8:	1f 90       	pop	r1
- 3ea:	18 95       	reti
+ 3e4:	cf 91       	pop	r28
+ 3e6:	df 91       	pop	r29
+ 3e8:	ff 91       	pop	r31
+ 3ea:	ef 91       	pop	r30
+ 3ec:	bf 91       	pop	r27
+ 3ee:	af 91       	pop	r26
+ 3f0:	9f 91       	pop	r25
+ 3f2:	8f 91       	pop	r24
+ 3f4:	7f 91       	pop	r23
+ 3f6:	6f 91       	pop	r22
+ 3f8:	5f 91       	pop	r21
+ 3fa:	4f 91       	pop	r20
+ 3fc:	3f 91       	pop	r19
+ 3fe:	2f 91       	pop	r18
+ 400:	0f 90       	pop	r0
+ 402:	0f be       	out	0x3f, r0	; 63
+ 404:	0f 90       	pop	r0
+ 406:	1f 90       	pop	r1
+ 408:	18 95       	reti
 
-000003ec <TIMER0_init>:
+0000040a <TIMER0_init>:
 
 /*******************************************************************************
  *                      Functions Definitions                                  *
  *******************************************************************************/
 void TIMER0_init(const Timer_ConfigType * Config_Ptr)
 {
- 3ec:	df 93       	push	r29
- 3ee:	cf 93       	push	r28
- 3f0:	00 d0       	rcall	.+0      	; 0x3f2 <TIMER0_init+0x6>
- 3f2:	cd b7       	in	r28, 0x3d	; 61
- 3f4:	de b7       	in	r29, 0x3e	; 62
- 3f6:	9a 83       	std	Y+2, r25	; 0x02
- 3f8:	89 83       	std	Y+1, r24	; 0x01
+ 40a:	df 93       	push	r29
+ 40c:	cf 93       	push	r28
+ 40e:	00 d0       	rcall	.+0      	; 0x410 <TIMER0_init+0x6>
+ 410:	cd b7       	in	r28, 0x3d	; 61
+ 412:	de b7       	in	r29, 0x3e	; 62
+ 414:	9a 83       	std	Y+2, r25	; 0x02
+ 416:	89 83       	std	Y+1, r24	; 0x01
 	/*TCCR0 &= 0x00;
 	TCNT0 &= 0x00;
 	OCR0  &= 0x00;
 */
 	/* non PWM Mode */
 	TCCR0 = (1<<FOC0);
- 3fa:	e3 e5       	ldi	r30, 0x53	; 83
- 3fc:	f0 e0       	ldi	r31, 0x00	; 0
- 3fe:	80 e8       	ldi	r24, 0x80	; 128
- 400:	80 83       	st	Z, r24
+ 418:	e3 e5       	ldi	r30, 0x53	; 83
+ 41a:	f0 e0       	ldi	r31, 0x00	; 0
+ 41c:	80 e8       	ldi	r24, 0x80	; 128
+ 41e:	80 83       	st	Z, r24
 	/*set initial value */
 	TCNT0 = Config_Ptr->initial;
- 402:	a2 e5       	ldi	r26, 0x52	; 82
- 404:	b0 e0       	ldi	r27, 0x00	; 0
- 406:	e9 81       	ldd	r30, Y+1	; 0x01
- 408:	fa 81       	ldd	r31, Y+2	; 0x02
- 40a:	84 81       	ldd	r24, Z+4	; 0x04
- 40c:	95 81       	ldd	r25, Z+5	; 0x05
- 40e:	8c 93       	st	X, r24
+ 420:	a2 e5       	ldi	r26, 0x52	; 82
+ 422:	b0 e0       	ldi	r27, 0x00	; 0
+ 424:	e9 81       	ldd	r30, Y+1	; 0x01
+ 426:	fa 81       	ldd	r31, Y+2	; 0x02
+ 428:	85 81       	ldd	r24, Z+5	; 0x05
+ 42a:	96 81       	ldd	r25, Z+6	; 0x06
+ 42c:	8c 93       	st	X, r24
+
 	/*set compare value for compare mode*/
 	OCR0 = Config_Ptr->compare_value;
- 410:	ac e5       	ldi	r26, 0x5C	; 92
- 412:	b0 e0       	ldi	r27, 0x00	; 0
- 414:	e9 81       	ldd	r30, Y+1	; 0x01
- 416:	fa 81       	ldd	r31, Y+2	; 0x02
- 418:	86 81       	ldd	r24, Z+6	; 0x06
- 41a:	97 81       	ldd	r25, Z+7	; 0x07
- 41c:	8c 93       	st	X, r24
+ 42e:	ac e5       	ldi	r26, 0x5C	; 92
+ 430:	b0 e0       	ldi	r27, 0x00	; 0
+ 432:	e9 81       	ldd	r30, Y+1	; 0x01
+ 434:	fa 81       	ldd	r31, Y+2	; 0x02
+ 436:	87 81       	ldd	r24, Z+7	; 0x07
+ 438:	90 85       	ldd	r25, Z+8	; 0x08
+ 43a:	8c 93       	st	X, r24
 
 
 	if((Config_Ptr->OutputPin) == OC0){
- 41e:	e9 81       	ldd	r30, Y+1	; 0x01
- 420:	fa 81       	ldd	r31, Y+2	; 0x02
- 422:	83 81       	ldd	r24, Z+3	; 0x03
- 424:	83 30       	cpi	r24, 0x03	; 3
- 426:	39 f4       	brne	.+14     	; 0x436 <TIMER0_init+0x4a>
+ 43c:	e9 81       	ldd	r30, Y+1	; 0x01
+ 43e:	fa 81       	ldd	r31, Y+2	; 0x02
+ 440:	84 81       	ldd	r24, Z+4	; 0x04
+ 442:	83 30       	cpi	r24, 0x03	; 3
+ 444:	39 f4       	brne	.+14     	; 0x454 <TIMER0_init+0x4a>
 		// configure the output pin PB3 in compare mode
-		DDRB |= (1 << OC0);
- 428:	a7 e3       	ldi	r26, 0x37	; 55
- 42a:	b0 e0       	ldi	r27, 0x00	; 0
- 42c:	e7 e3       	ldi	r30, 0x37	; 55
- 42e:	f0 e0       	ldi	r31, 0x00	; 0
- 430:	80 81       	ld	r24, Z
- 432:	88 60       	ori	r24, 0x08	; 8
- 434:	8c 93       	st	X, r24
+		PORTD_DIR |= (1 << OC0);
+ 446:	a1 e3       	ldi	r26, 0x31	; 49
+ 448:	b0 e0       	ldi	r27, 0x00	; 0
+ 44a:	e1 e3       	ldi	r30, 0x31	; 49
+ 44c:	f0 e0       	ldi	r31, 0x00	; 0
+ 44e:	80 81       	ld	r24, Z
+ 450:	88 60       	ori	r24, 0x08	; 8
+ 452:	8c 93       	st	X, r24
 	}
 
 	if( (Config_Ptr -> mode ) == NORMAL_MODE) {
- 436:	e9 81       	ldd	r30, Y+1	; 0x01
- 438:	fa 81       	ldd	r31, Y+2	; 0x02
- 43a:	81 81       	ldd	r24, Z+1	; 0x01
- 43c:	88 23       	and	r24, r24
- 43e:	41 f4       	brne	.+16     	; 0x450 <TIMER0_init+0x64>
+ 454:	e9 81       	ldd	r30, Y+1	; 0x01
+ 456:	fa 81       	ldd	r31, Y+2	; 0x02
+ 458:	81 81       	ldd	r24, Z+1	; 0x01
+ 45a:	88 23       	and	r24, r24
+ 45c:	41 f4       	brne	.+16     	; 0x46e <TIMER0_init+0x64>
 		/*Enable interrupt for overflow mode*/
 		TIMSK |= (1 << TOIE0);
- 440:	a9 e5       	ldi	r26, 0x59	; 89
- 442:	b0 e0       	ldi	r27, 0x00	; 0
- 444:	e9 e5       	ldi	r30, 0x59	; 89
- 446:	f0 e0       	ldi	r31, 0x00	; 0
- 448:	80 81       	ld	r24, Z
- 44a:	81 60       	ori	r24, 0x01	; 1
- 44c:	8c 93       	st	X, r24
- 44e:	0c c0       	rjmp	.+24     	; 0x468 <TIMER0_init+0x7c>
+ 45e:	a9 e5       	ldi	r26, 0x59	; 89
+ 460:	b0 e0       	ldi	r27, 0x00	; 0
+ 462:	e9 e5       	ldi	r30, 0x59	; 89
+ 464:	f0 e0       	ldi	r31, 0x00	; 0
+ 466:	80 81       	ld	r24, Z
+ 468:	81 60       	ori	r24, 0x01	; 1
+ 46a:	8c 93       	st	X, r24
+ 46c:	0c c0       	rjmp	.+24     	; 0x486 <TIMER0_init+0x7c>
 	}
 	else if ( (Config_Ptr -> mode) == CTC_MODE){
- 450:	e9 81       	ldd	r30, Y+1	; 0x01
- 452:	fa 81       	ldd	r31, Y+2	; 0x02
- 454:	81 81       	ldd	r24, Z+1	; 0x01
- 456:	81 30       	cpi	r24, 0x01	; 1
- 458:	39 f4       	brne	.+14     	; 0x468 <TIMER0_init+0x7c>
+ 46e:	e9 81       	ldd	r30, Y+1	; 0x01
+ 470:	fa 81       	ldd	r31, Y+2	; 0x02
+ 472:	81 81       	ldd	r24, Z+1	; 0x01
+ 474:	81 30       	cpi	r24, 0x01	; 1
+ 476:	39 f4       	brne	.+14     	; 0x486 <TIMER0_init+0x7c>
 		/*Enable interrupt for compare mode*/
 		TIMSK |= (1 << OCIE0);
- 45a:	a9 e5       	ldi	r26, 0x59	; 89
- 45c:	b0 e0       	ldi	r27, 0x00	; 0
- 45e:	e9 e5       	ldi	r30, 0x59	; 89
- 460:	f0 e0       	ldi	r31, 0x00	; 0
- 462:	80 81       	ld	r24, Z
- 464:	82 60       	ori	r24, 0x02	; 2
- 466:	8c 93       	st	X, r24
+ 478:	a9 e5       	ldi	r26, 0x59	; 89
+ 47a:	b0 e0       	ldi	r27, 0x00	; 0
+ 47c:	e9 e5       	ldi	r30, 0x59	; 89
+ 47e:	f0 e0       	ldi	r31, 0x00	; 0
+ 480:	80 81       	ld	r24, Z
+ 482:	82 60       	ori	r24, 0x02	; 2
+ 484:	8c 93       	st	X, r24
 	}
 
 	/*configure the mode of the timer*/
 	TCCR0 =  (TCCR0 & ~(0x48) ) | ( ( (Config_Ptr->mode) << WGM00) & 0x48 ) ;
- 468:	a3 e5       	ldi	r26, 0x53	; 83
- 46a:	b0 e0       	ldi	r27, 0x00	; 0
- 46c:	e3 e5       	ldi	r30, 0x53	; 83
- 46e:	f0 e0       	ldi	r31, 0x00	; 0
- 470:	80 81       	ld	r24, Z
- 472:	28 2f       	mov	r18, r24
- 474:	27 7b       	andi	r18, 0xB7	; 183
- 476:	e9 81       	ldd	r30, Y+1	; 0x01
- 478:	fa 81       	ldd	r31, Y+2	; 0x02
- 47a:	81 81       	ldd	r24, Z+1	; 0x01
- 47c:	88 2f       	mov	r24, r24
- 47e:	90 e0       	ldi	r25, 0x00	; 0
- 480:	00 24       	eor	r0, r0
- 482:	96 95       	lsr	r25
- 484:	87 95       	ror	r24
- 486:	07 94       	ror	r0
- 488:	96 95       	lsr	r25
- 48a:	87 95       	ror	r24
- 48c:	07 94       	ror	r0
- 48e:	98 2f       	mov	r25, r24
- 490:	80 2d       	mov	r24, r0
- 492:	88 74       	andi	r24, 0x48	; 72
- 494:	82 2b       	or	r24, r18
- 496:	8c 93       	st	X, r24
+ 486:	a3 e5       	ldi	r26, 0x53	; 83
+ 488:	b0 e0       	ldi	r27, 0x00	; 0
+ 48a:	e3 e5       	ldi	r30, 0x53	; 83
+ 48c:	f0 e0       	ldi	r31, 0x00	; 0
+ 48e:	80 81       	ld	r24, Z
+ 490:	28 2f       	mov	r18, r24
+ 492:	27 7b       	andi	r18, 0xB7	; 183
+ 494:	e9 81       	ldd	r30, Y+1	; 0x01
+ 496:	fa 81       	ldd	r31, Y+2	; 0x02
+ 498:	81 81       	ldd	r24, Z+1	; 0x01
+ 49a:	88 2f       	mov	r24, r24
+ 49c:	90 e0       	ldi	r25, 0x00	; 0
+ 49e:	00 24       	eor	r0, r0
+ 4a0:	96 95       	lsr	r25
+ 4a2:	87 95       	ror	r24
+ 4a4:	07 94       	ror	r0
+ 4a6:	96 95       	lsr	r25
+ 4a8:	87 95       	ror	r24
+ 4aa:	07 94       	ror	r0
+ 4ac:	98 2f       	mov	r25, r24
+ 4ae:	80 2d       	mov	r24, r0
+ 4b0:	88 74       	andi	r24, 0x48	; 72
+ 4b2:	82 2b       	or	r24, r18
+ 4b4:	8c 93       	st	X, r24
 	/* Choose the operation that should be done in compare match occurs*/
 	TCCR0 = (TCCR0 & 0XCF) | ( ( (Config_Ptr->compare_output) & 0X03) << COM00 );
- 498:	a3 e5       	ldi	r26, 0x53	; 83
- 49a:	b0 e0       	ldi	r27, 0x00	; 0
- 49c:	e3 e5       	ldi	r30, 0x53	; 83
- 49e:	f0 e0       	ldi	r31, 0x00	; 0
- 4a0:	80 81       	ld	r24, Z
- 4a2:	28 2f       	mov	r18, r24
- 4a4:	2f 7c       	andi	r18, 0xCF	; 207
- 4a6:	e9 81       	ldd	r30, Y+1	; 0x01
- 4a8:	fa 81       	ldd	r31, Y+2	; 0x02
- 4aa:	82 81       	ldd	r24, Z+2	; 0x02
- 4ac:	88 2f       	mov	r24, r24
- 4ae:	90 e0       	ldi	r25, 0x00	; 0
- 4b0:	83 70       	andi	r24, 0x03	; 3
- 4b2:	90 70       	andi	r25, 0x00	; 0
- 4b4:	82 95       	swap	r24
- 4b6:	92 95       	swap	r25
- 4b8:	90 7f       	andi	r25, 0xF0	; 240
- 4ba:	98 27       	eor	r25, r24
- 4bc:	80 7f       	andi	r24, 0xF0	; 240
- 4be:	98 27       	eor	r25, r24
- 4c0:	82 2b       	or	r24, r18
- 4c2:	8c 93       	st	X, r24
+ 4b6:	a3 e5       	ldi	r26, 0x53	; 83
+ 4b8:	b0 e0       	ldi	r27, 0x00	; 0
+ 4ba:	e3 e5       	ldi	r30, 0x53	; 83
+ 4bc:	f0 e0       	ldi	r31, 0x00	; 0
+ 4be:	80 81       	ld	r24, Z
+ 4c0:	28 2f       	mov	r18, r24
+ 4c2:	2f 7c       	andi	r18, 0xCF	; 207
+ 4c4:	e9 81       	ldd	r30, Y+1	; 0x01
+ 4c6:	fa 81       	ldd	r31, Y+2	; 0x02
+ 4c8:	82 81       	ldd	r24, Z+2	; 0x02
+ 4ca:	88 2f       	mov	r24, r24
+ 4cc:	90 e0       	ldi	r25, 0x00	; 0
+ 4ce:	83 70       	andi	r24, 0x03	; 3
+ 4d0:	90 70       	andi	r25, 0x00	; 0
+ 4d2:	82 95       	swap	r24
+ 4d4:	92 95       	swap	r25
+ 4d6:	90 7f       	andi	r25, 0xF0	; 240
+ 4d8:	98 27       	eor	r25, r24
+ 4da:	80 7f       	andi	r24, 0xF0	; 240
+ 4dc:	98 27       	eor	r25, r24
+ 4de:	82 2b       	or	r24, r18
+ 4e0:	8c 93       	st	X, r24
 	/* choose the timer clock (F_CPU / prescaler)*/
 	TCCR0 = (TCCR0 & 0XF8) | (Config_Ptr->clock & 0X07);
- 4c4:	a3 e5       	ldi	r26, 0x53	; 83
- 4c6:	b0 e0       	ldi	r27, 0x00	; 0
- 4c8:	e3 e5       	ldi	r30, 0x53	; 83
- 4ca:	f0 e0       	ldi	r31, 0x00	; 0
- 4cc:	80 81       	ld	r24, Z
- 4ce:	98 2f       	mov	r25, r24
- 4d0:	98 7f       	andi	r25, 0xF8	; 248
- 4d2:	e9 81       	ldd	r30, Y+1	; 0x01
- 4d4:	fa 81       	ldd	r31, Y+2	; 0x02
- 4d6:	80 81       	ld	r24, Z
- 4d8:	87 70       	andi	r24, 0x07	; 7
- 4da:	89 2b       	or	r24, r25
- 4dc:	8c 93       	st	X, r24
+ 4e2:	a3 e5       	ldi	r26, 0x53	; 83
+ 4e4:	b0 e0       	ldi	r27, 0x00	; 0
+ 4e6:	e3 e5       	ldi	r30, 0x53	; 83
+ 4e8:	f0 e0       	ldi	r31, 0x00	; 0
+ 4ea:	80 81       	ld	r24, Z
+ 4ec:	98 2f       	mov	r25, r24
+ 4ee:	98 7f       	andi	r25, 0xF8	; 248
+ 4f0:	e9 81       	ldd	r30, Y+1	; 0x01
+ 4f2:	fa 81       	ldd	r31, Y+2	; 0x02
+ 4f4:	80 81       	ld	r24, Z
+ 4f6:	87 70       	andi	r24, 0x07	; 7
+ 4f8:	89 2b       	or	r24, r25
+ 4fa:	8c 93       	st	X, r24
 }
- 4de:	0f 90       	pop	r0
- 4e0:	0f 90       	pop	r0
- 4e2:	cf 91       	pop	r28
- 4e4:	df 91       	pop	r29
- 4e6:	08 95       	ret
+ 4fc:	0f 90       	pop	r0
+ 4fe:	0f 90       	pop	r0
+ 500:	cf 91       	pop	r28
+ 502:	df 91       	pop	r29
+ 504:	08 95       	ret
 
-000004e8 <TIMER1_init>:
+00000506 <TIMER1_init>:
 
 void TIMER1_init(const Timer_ConfigType * Config_Ptr)
 {
- 4e8:	df 93       	push	r29
- 4ea:	cf 93       	push	r28
- 4ec:	00 d0       	rcall	.+0      	; 0x4ee <TIMER1_init+0x6>
- 4ee:	cd b7       	in	r28, 0x3d	; 61
- 4f0:	de b7       	in	r29, 0x3e	; 62
- 4f2:	9a 83       	std	Y+2, r25	; 0x02
- 4f4:	89 83       	std	Y+1, r24	; 0x01
+ 506:	df 93       	push	r29
+ 508:	cf 93       	push	r28
+ 50a:	00 d0       	rcall	.+0      	; 0x50c <TIMER1_init+0x6>
+ 50c:	cd b7       	in	r28, 0x3d	; 61
+ 50e:	de b7       	in	r29, 0x3e	; 62
+ 510:	9a 83       	std	Y+2, r25	; 0x02
+ 512:	89 83       	std	Y+1, r24	; 0x01
 /*			TCNT1  = 0;
 			OCR1A  = 0;
 			OCR1B  = 0;
 */
 	/*set the initial value*/
 	TCNT1 = ( (Config_Ptr -> initial) );
- 4f6:	ac e4       	ldi	r26, 0x4C	; 76
- 4f8:	b0 e0       	ldi	r27, 0x00	; 0
- 4fa:	e9 81       	ldd	r30, Y+1	; 0x01
- 4fc:	fa 81       	ldd	r31, Y+2	; 0x02
- 4fe:	84 81       	ldd	r24, Z+4	; 0x04
- 500:	95 81       	ldd	r25, Z+5	; 0x05
- 502:	11 96       	adiw	r26, 0x01	; 1
- 504:	9c 93       	st	X, r25
- 506:	8e 93       	st	-X, r24
-	/*  Non PWM Mode */
-	TCCR1A = (1 << FOC1A) | (1 << FOC1B) ;
- 508:	ef e4       	ldi	r30, 0x4F	; 79
- 50a:	f0 e0       	ldi	r31, 0x00	; 0
- 50c:	8c e0       	ldi	r24, 0x0C	; 12
- 50e:	80 83       	st	Z, r24
-	if((Config_Ptr -> OutputPin) == OC1A){
- 510:	e9 81       	ldd	r30, Y+1	; 0x01
- 512:	fa 81       	ldd	r31, Y+2	; 0x02
- 514:	83 81       	ldd	r24, Z+3	; 0x03
- 516:	85 30       	cpi	r24, 0x05	; 5
- 518:	41 f4       	brne	.+16     	; 0x52a <TIMER1_init+0x42>
-	// configure the output pin PD5 in compare mode
-		DDRD |= (1 << OC1A);
- 51a:	a1 e3       	ldi	r26, 0x31	; 49
- 51c:	b0 e0       	ldi	r27, 0x00	; 0
- 51e:	e1 e3       	ldi	r30, 0x31	; 49
- 520:	f0 e0       	ldi	r31, 0x00	; 0
- 522:	80 81       	ld	r24, Z
- 524:	80 62       	ori	r24, 0x20	; 32
- 526:	8c 93       	st	X, r24
- 528:	0c c0       	rjmp	.+24     	; 0x542 <TIMER1_init+0x5a>
-	}
+ 514:	ac e4       	ldi	r26, 0x4C	; 76
+ 516:	b0 e0       	ldi	r27, 0x00	; 0
+ 518:	e9 81       	ldd	r30, Y+1	; 0x01
+ 51a:	fa 81       	ldd	r31, Y+2	; 0x02
+ 51c:	85 81       	ldd	r24, Z+5	; 0x05
+ 51e:	96 81       	ldd	r25, Z+6	; 0x06
+ 520:	11 96       	adiw	r26, 0x01	; 1
+ 522:	9c 93       	st	X, r25
+ 524:	8e 93       	st	-X, r24
 
-	/* Check for OC1B */
-	else if ((Config_Ptr -> OutputPin) == OC1B){
- 52a:	e9 81       	ldd	r30, Y+1	; 0x01
- 52c:	fa 81       	ldd	r31, Y+2	; 0x02
- 52e:	83 81       	ldd	r24, Z+3	; 0x03
- 530:	84 30       	cpi	r24, 0x04	; 4
- 532:	39 f4       	brne	.+14     	; 0x542 <TIMER1_init+0x5a>
-		// configure the output pin PD4 in compare mode
-		DDRD |= (1 << OC1B);
- 534:	a1 e3       	ldi	r26, 0x31	; 49
- 536:	b0 e0       	ldi	r27, 0x00	; 0
- 538:	e1 e3       	ldi	r30, 0x31	; 49
- 53a:	f0 e0       	ldi	r31, 0x00	; 0
- 53c:	80 81       	ld	r24, Z
- 53e:	80 61       	ori	r24, 0x10	; 16
- 540:	8c 93       	st	X, r24
-	}
-	if( (Config_Ptr->mode ) == NORMAL_MODE)
- 542:	e9 81       	ldd	r30, Y+1	; 0x01
- 544:	fa 81       	ldd	r31, Y+2	; 0x02
- 546:	81 81       	ldd	r24, Z+1	; 0x01
- 548:	88 23       	and	r24, r24
- 54a:	41 f4       	brne	.+16     	; 0x55c <TIMER1_init+0x74>
+	if( (Config_Ptr->mode ) == NORMAL_MODE )
+ 526:	e9 81       	ldd	r30, Y+1	; 0x01
+ 528:	fa 81       	ldd	r31, Y+2	; 0x02
+ 52a:	81 81       	ldd	r24, Z+1	; 0x01
+ 52c:	88 23       	and	r24, r24
+ 52e:	91 f4       	brne	.+36     	; 0x554 <TIMER1_init+0x4e>
 	{
-		/* Enable interrupt FOR normal mode */
-		TIMSK |= (1 << TOIE1);
- 54c:	a9 e5       	ldi	r26, 0x59	; 89
- 54e:	b0 e0       	ldi	r27, 0x00	; 0
- 550:	e9 e5       	ldi	r30, 0x59	; 89
- 552:	f0 e0       	ldi	r31, 0x00	; 0
- 554:	80 81       	ld	r24, Z
- 556:	84 60       	ori	r24, 0x04	; 4
- 558:	8c 93       	st	X, r24
- 55a:	56 c0       	rjmp	.+172    	; 0x608 <TIMER1_init+0x120>
+		/*  Non PWM Mode */
+		TCCR1A = (1 << FOC1A) | (1 << FOC1B) ;
+ 530:	ef e4       	ldi	r30, 0x4F	; 79
+ 532:	f0 e0       	ldi	r31, 0x00	; 0
+ 534:	8c e0       	ldi	r24, 0x0C	; 12
+ 536:	80 83       	st	Z, r24
+
+		if(Config_Ptr->interrupt){
+ 538:	e9 81       	ldd	r30, Y+1	; 0x01
+ 53a:	fa 81       	ldd	r31, Y+2	; 0x02
+ 53c:	83 85       	ldd	r24, Z+11	; 0x0b
+ 53e:	88 23       	and	r24, r24
+ 540:	09 f4       	brne	.+2      	; 0x544 <TIMER1_init+0x3e>
+ 542:	ea c0       	rjmp	.+468    	; 0x718 <TIMER1_init+0x212>
+			/* Enable interrupt FOR normal mode */
+			TIMSK |= (1 << TOIE1);
+ 544:	a9 e5       	ldi	r26, 0x59	; 89
+ 546:	b0 e0       	ldi	r27, 0x00	; 0
+ 548:	e9 e5       	ldi	r30, 0x59	; 89
+ 54a:	f0 e0       	ldi	r31, 0x00	; 0
+ 54c:	80 81       	ld	r24, Z
+ 54e:	84 60       	ori	r24, 0x04	; 4
+ 550:	8c 93       	st	X, r24
+ 552:	e2 c0       	rjmp	.+452    	; 0x718 <TIMER1_init+0x212>
+		}
+
 	}
-	else if ((Config_Ptr->mode) == CTC_MODE_CHANNEL_A)
- 55c:	e9 81       	ldd	r30, Y+1	; 0x01
- 55e:	fa 81       	ldd	r31, Y+2	; 0x02
- 560:	81 81       	ldd	r24, Z+1	; 0x01
- 562:	82 30       	cpi	r24, 0x02	; 2
- 564:	41 f5       	brne	.+80     	; 0x5b6 <TIMER1_init+0xce>
-	{
-		/*set compare value for compare mode channel A*/
-		OCR1A  = ((Config_Ptr->compare_value));
- 566:	aa e4       	ldi	r26, 0x4A	; 74
- 568:	b0 e0       	ldi	r27, 0x00	; 0
- 56a:	e9 81       	ldd	r30, Y+1	; 0x01
- 56c:	fa 81       	ldd	r31, Y+2	; 0x02
- 56e:	86 81       	ldd	r24, Z+6	; 0x06
- 570:	97 81       	ldd	r25, Z+7	; 0x07
- 572:	11 96       	adiw	r26, 0x01	; 1
- 574:	9c 93       	st	X, r25
- 576:	8e 93       	st	-X, r24
-		/* Enable interrupt for compare mode channel A */
-		TIMSK |= (1 << OCIE1A);
- 578:	a9 e5       	ldi	r26, 0x59	; 89
- 57a:	b0 e0       	ldi	r27, 0x00	; 0
- 57c:	e9 e5       	ldi	r30, 0x59	; 89
- 57e:	f0 e0       	ldi	r31, 0x00	; 0
- 580:	80 81       	ld	r24, Z
- 582:	80 61       	ori	r24, 0x10	; 16
- 584:	8c 93       	st	X, r24
-		/* Choose the operation that should be done in compare match occurs in channel A */
-		TCCR1A = ( (TCCR1A & 0x3F) | ( (Config_Ptr -> compare_output) << COM1A0) );
- 586:	af e4       	ldi	r26, 0x4F	; 79
- 588:	b0 e0       	ldi	r27, 0x00	; 0
- 58a:	ef e4       	ldi	r30, 0x4F	; 79
- 58c:	f0 e0       	ldi	r31, 0x00	; 0
- 58e:	80 81       	ld	r24, Z
- 590:	28 2f       	mov	r18, r24
- 592:	2f 73       	andi	r18, 0x3F	; 63
+	else if((Config_Ptr->mode ) == CTC_MODE){
+ 554:	e9 81       	ldd	r30, Y+1	; 0x01
+ 556:	fa 81       	ldd	r31, Y+2	; 0x02
+ 558:	81 81       	ldd	r24, Z+1	; 0x01
+ 55a:	81 30       	cpi	r24, 0x01	; 1
+ 55c:	d9 f4       	brne	.+54     	; 0x594 <TIMER1_init+0x8e>
+		/*  Non PWM Mode */
+		TCCR1A = (1 << FOC1A) | (1 << FOC1B) ;
+ 55e:	ef e4       	ldi	r30, 0x4F	; 79
+ 560:	f0 e0       	ldi	r31, 0x00	; 0
+ 562:	8c e0       	ldi	r24, 0x0C	; 12
+ 564:	80 83       	st	Z, r24
+
+		if(Config_Ptr->interrupt){
+ 566:	e9 81       	ldd	r30, Y+1	; 0x01
+ 568:	fa 81       	ldd	r31, Y+2	; 0x02
+ 56a:	83 85       	ldd	r24, Z+11	; 0x0b
+ 56c:	88 23       	and	r24, r24
+ 56e:	39 f0       	breq	.+14     	; 0x57e <TIMER1_init+0x78>
+			/* Enable interrupt FOR normal mode */
+			TIMSK |= (1 << OCIE1A);
+ 570:	a9 e5       	ldi	r26, 0x59	; 89
+ 572:	b0 e0       	ldi	r27, 0x00	; 0
+ 574:	e9 e5       	ldi	r30, 0x59	; 89
+ 576:	f0 e0       	ldi	r31, 0x00	; 0
+ 578:	80 81       	ld	r24, Z
+ 57a:	80 61       	ori	r24, 0x10	; 16
+ 57c:	8c 93       	st	X, r24
+		}
+		OCR1A    = ((Config_Ptr->top_count));
+ 57e:	ea e4       	ldi	r30, 0x4A	; 74
+ 580:	f0 e0       	ldi	r31, 0x00	; 0
+ 582:	a9 81       	ldd	r26, Y+1	; 0x01
+ 584:	ba 81       	ldd	r27, Y+2	; 0x02
+ 586:	19 96       	adiw	r26, 0x09	; 9
+ 588:	8d 91       	ld	r24, X+
+ 58a:	9c 91       	ld	r25, X
+ 58c:	1a 97       	sbiw	r26, 0x0a	; 10
+ 58e:	91 83       	std	Z+1, r25	; 0x01
+ 590:	80 83       	st	Z, r24
+ 592:	c2 c0       	rjmp	.+388    	; 0x718 <TIMER1_init+0x212>
+//		/* Check for OC1B */
+//		else if ((Config_Ptr -> OutputPin) == OC1B){
+//			// configure the output pin PD4 in compare mode
+//			PORTD_DIR |= (1 << OC1B);
+//		}
+		if ((Config_Ptr->channel) == CHANNEL_A)
  594:	e9 81       	ldd	r30, Y+1	; 0x01
  596:	fa 81       	ldd	r31, Y+2	; 0x02
- 598:	82 81       	ldd	r24, Z+2	; 0x02
- 59a:	88 2f       	mov	r24, r24
- 59c:	90 e0       	ldi	r25, 0x00	; 0
- 59e:	00 24       	eor	r0, r0
- 5a0:	96 95       	lsr	r25
- 5a2:	87 95       	ror	r24
- 5a4:	07 94       	ror	r0
- 5a6:	96 95       	lsr	r25
- 5a8:	87 95       	ror	r24
- 5aa:	07 94       	ror	r0
- 5ac:	98 2f       	mov	r25, r24
- 5ae:	80 2d       	mov	r24, r0
- 5b0:	82 2b       	or	r24, r18
- 5b2:	8c 93       	st	X, r24
- 5b4:	29 c0       	rjmp	.+82     	; 0x608 <TIMER1_init+0x120>
-	}
+ 598:	84 85       	ldd	r24, Z+12	; 0x0c
+ 59a:	88 23       	and	r24, r24
+ 59c:	09 f0       	breq	.+2      	; 0x5a0 <TIMER1_init+0x9a>
+ 59e:	5d c0       	rjmp	.+186    	; 0x65a <TIMER1_init+0x154>
+		{
+			// configure the output pin PD5 in compare mode
+				PORTD_DIR |= (1 << OC1A);
+ 5a0:	a1 e3       	ldi	r26, 0x31	; 49
+ 5a2:	b0 e0       	ldi	r27, 0x00	; 0
+ 5a4:	e1 e3       	ldi	r30, 0x31	; 49
+ 5a6:	f0 e0       	ldi	r31, 0x00	; 0
+ 5a8:	80 81       	ld	r24, Z
+ 5aa:	80 62       	ori	r24, 0x20	; 32
+ 5ac:	8c 93       	st	X, r24
 
-	else if ( (Config_Ptr->mode) == CTC_MODE_CHANNEL_B){
- 5b6:	e9 81       	ldd	r30, Y+1	; 0x01
- 5b8:	fa 81       	ldd	r31, Y+2	; 0x02
- 5ba:	81 81       	ldd	r24, Z+1	; 0x01
- 5bc:	83 30       	cpi	r24, 0x03	; 3
- 5be:	21 f5       	brne	.+72     	; 0x608 <TIMER1_init+0x120>
-		/*set compare value for compare mode channel B*/
-		OCR1B  = ((Config_Ptr -> compare_value));
- 5c0:	a8 e4       	ldi	r26, 0x48	; 72
+			/*set compare value for compare mode channel A*/
+			OCR1A  = ((Config_Ptr->compare_value));
+ 5ae:	aa e4       	ldi	r26, 0x4A	; 74
+ 5b0:	b0 e0       	ldi	r27, 0x00	; 0
+ 5b2:	e9 81       	ldd	r30, Y+1	; 0x01
+ 5b4:	fa 81       	ldd	r31, Y+2	; 0x02
+ 5b6:	87 81       	ldd	r24, Z+7	; 0x07
+ 5b8:	90 85       	ldd	r25, Z+8	; 0x08
+ 5ba:	11 96       	adiw	r26, 0x01	; 1
+ 5bc:	9c 93       	st	X, r25
+ 5be:	8e 93       	st	-X, r24
+			ICR1   = ((Config_Ptr->top_count));
+ 5c0:	a6 e4       	ldi	r26, 0x46	; 70
  5c2:	b0 e0       	ldi	r27, 0x00	; 0
  5c4:	e9 81       	ldd	r30, Y+1	; 0x01
  5c6:	fa 81       	ldd	r31, Y+2	; 0x02
- 5c8:	86 81       	ldd	r24, Z+6	; 0x06
- 5ca:	97 81       	ldd	r25, Z+7	; 0x07
+ 5c8:	81 85       	ldd	r24, Z+9	; 0x09
+ 5ca:	92 85       	ldd	r25, Z+10	; 0x0a
  5cc:	11 96       	adiw	r26, 0x01	; 1
  5ce:	9c 93       	st	X, r25
  5d0:	8e 93       	st	-X, r24
+			if(Config_Ptr->interrupt){
+ 5d2:	e9 81       	ldd	r30, Y+1	; 0x01
+ 5d4:	fa 81       	ldd	r31, Y+2	; 0x02
+ 5d6:	83 85       	ldd	r24, Z+11	; 0x0b
+ 5d8:	88 23       	and	r24, r24
+ 5da:	39 f0       	breq	.+14     	; 0x5ea <TIMER1_init+0xe4>
+				/* Enable interrupt for compare mode channel A */
+				TIMSK |= (1 << OCIE1A);
+ 5dc:	a9 e5       	ldi	r26, 0x59	; 89
+ 5de:	b0 e0       	ldi	r27, 0x00	; 0
+ 5e0:	e9 e5       	ldi	r30, 0x59	; 89
+ 5e2:	f0 e0       	ldi	r31, 0x00	; 0
+ 5e4:	80 81       	ld	r24, Z
+ 5e6:	80 61       	ori	r24, 0x10	; 16
+ 5e8:	8c 93       	st	X, r24
+			}
+			/* Choose the operation that should be done in compare match occurs in channel A */
+			TCCR1A = ( ( TCCR1A & 0x3F ) | ( (Config_Ptr -> compare_output) << COM1A0) );
+ 5ea:	af e4       	ldi	r26, 0x4F	; 79
+ 5ec:	b0 e0       	ldi	r27, 0x00	; 0
+ 5ee:	ef e4       	ldi	r30, 0x4F	; 79
+ 5f0:	f0 e0       	ldi	r31, 0x00	; 0
+ 5f2:	80 81       	ld	r24, Z
+ 5f4:	28 2f       	mov	r18, r24
+ 5f6:	2f 73       	andi	r18, 0x3F	; 63
+ 5f8:	e9 81       	ldd	r30, Y+1	; 0x01
+ 5fa:	fa 81       	ldd	r31, Y+2	; 0x02
+ 5fc:	82 81       	ldd	r24, Z+2	; 0x02
+ 5fe:	88 2f       	mov	r24, r24
+ 600:	90 e0       	ldi	r25, 0x00	; 0
+ 602:	00 24       	eor	r0, r0
+ 604:	96 95       	lsr	r25
+ 606:	87 95       	ror	r24
+ 608:	07 94       	ror	r0
+ 60a:	96 95       	lsr	r25
+ 60c:	87 95       	ror	r24
+ 60e:	07 94       	ror	r0
+ 610:	98 2f       	mov	r25, r24
+ 612:	80 2d       	mov	r24, r0
+ 614:	82 2b       	or	r24, r18
+ 616:	8c 93       	st	X, r24
+			TCCR1A = ( ( TCCR1A & 0xFC ) | ( (Config_Ptr -> PWM) << WGM10 ) );
+ 618:	af e4       	ldi	r26, 0x4F	; 79
+ 61a:	b0 e0       	ldi	r27, 0x00	; 0
+ 61c:	ef e4       	ldi	r30, 0x4F	; 79
+ 61e:	f0 e0       	ldi	r31, 0x00	; 0
+ 620:	80 81       	ld	r24, Z
+ 622:	98 2f       	mov	r25, r24
+ 624:	9c 7f       	andi	r25, 0xFC	; 252
+ 626:	e9 81       	ldd	r30, Y+1	; 0x01
+ 628:	fa 81       	ldd	r31, Y+2	; 0x02
+ 62a:	83 81       	ldd	r24, Z+3	; 0x03
+ 62c:	89 2b       	or	r24, r25
+ 62e:	8c 93       	st	X, r24
+			TCCR1B = ( ( TCCR1B & 0xE7 ) | ( (Config_Ptr -> mode)<< WGM12 ) );
+ 630:	ae e4       	ldi	r26, 0x4E	; 78
+ 632:	b0 e0       	ldi	r27, 0x00	; 0
+ 634:	ee e4       	ldi	r30, 0x4E	; 78
+ 636:	f0 e0       	ldi	r31, 0x00	; 0
+ 638:	80 81       	ld	r24, Z
+ 63a:	28 2f       	mov	r18, r24
+ 63c:	27 7e       	andi	r18, 0xE7	; 231
+ 63e:	e9 81       	ldd	r30, Y+1	; 0x01
+ 640:	fa 81       	ldd	r31, Y+2	; 0x02
+ 642:	81 81       	ldd	r24, Z+1	; 0x01
+ 644:	88 2f       	mov	r24, r24
+ 646:	90 e0       	ldi	r25, 0x00	; 0
+ 648:	88 0f       	add	r24, r24
+ 64a:	99 1f       	adc	r25, r25
+ 64c:	88 0f       	add	r24, r24
+ 64e:	99 1f       	adc	r25, r25
+ 650:	88 0f       	add	r24, r24
+ 652:	99 1f       	adc	r25, r25
+ 654:	82 2b       	or	r24, r18
+ 656:	8c 93       	st	X, r24
+ 658:	5f c0       	rjmp	.+190    	; 0x718 <TIMER1_init+0x212>
 
-		/* Enable interrupt for compare mode channel B */
-		TIMSK |= (1 << OCIE1B);
- 5d2:	a9 e5       	ldi	r26, 0x59	; 89
- 5d4:	b0 e0       	ldi	r27, 0x00	; 0
- 5d6:	e9 e5       	ldi	r30, 0x59	; 89
- 5d8:	f0 e0       	ldi	r31, 0x00	; 0
- 5da:	80 81       	ld	r24, Z
- 5dc:	88 60       	ori	r24, 0x08	; 8
- 5de:	8c 93       	st	X, r24
-		/* Choose the operation that should be done in compare match occurs in channel B */
-		TCCR1A = ( (TCCR1A & 0xCF) | ( (Config_Ptr -> compare_output) << COM1B0) );
- 5e0:	af e4       	ldi	r26, 0x4F	; 79
- 5e2:	b0 e0       	ldi	r27, 0x00	; 0
- 5e4:	ef e4       	ldi	r30, 0x4F	; 79
- 5e6:	f0 e0       	ldi	r31, 0x00	; 0
- 5e8:	80 81       	ld	r24, Z
- 5ea:	28 2f       	mov	r18, r24
- 5ec:	2f 7c       	andi	r18, 0xCF	; 207
- 5ee:	e9 81       	ldd	r30, Y+1	; 0x01
- 5f0:	fa 81       	ldd	r31, Y+2	; 0x02
- 5f2:	82 81       	ldd	r24, Z+2	; 0x02
- 5f4:	88 2f       	mov	r24, r24
- 5f6:	90 e0       	ldi	r25, 0x00	; 0
- 5f8:	82 95       	swap	r24
- 5fa:	92 95       	swap	r25
- 5fc:	90 7f       	andi	r25, 0xF0	; 240
- 5fe:	98 27       	eor	r25, r24
- 600:	80 7f       	andi	r24, 0xF0	; 240
- 602:	98 27       	eor	r25, r24
- 604:	82 2b       	or	r24, r18
- 606:	8c 93       	st	X, r24
+		}
 
+		else if ( (Config_Ptr->channel) == CHANNEL_B){
+ 65a:	e9 81       	ldd	r30, Y+1	; 0x01
+ 65c:	fa 81       	ldd	r31, Y+2	; 0x02
+ 65e:	84 85       	ldd	r24, Z+12	; 0x0c
+ 660:	81 30       	cpi	r24, 0x01	; 1
+ 662:	09 f0       	breq	.+2      	; 0x666 <TIMER1_init+0x160>
+ 664:	59 c0       	rjmp	.+178    	; 0x718 <TIMER1_init+0x212>
+			// configure the output pin PD4 in compare mode
+			PORTD_DIR |= (1 << OC1B);
+ 666:	a1 e3       	ldi	r26, 0x31	; 49
+ 668:	b0 e0       	ldi	r27, 0x00	; 0
+ 66a:	e1 e3       	ldi	r30, 0x31	; 49
+ 66c:	f0 e0       	ldi	r31, 0x00	; 0
+ 66e:	80 81       	ld	r24, Z
+ 670:	80 61       	ori	r24, 0x10	; 16
+ 672:	8c 93       	st	X, r24
+
+			/*set compare value for compare mode channel B*/
+			OCR1B  = ((Config_Ptr -> compare_value));
+ 674:	a8 e4       	ldi	r26, 0x48	; 72
+ 676:	b0 e0       	ldi	r27, 0x00	; 0
+ 678:	e9 81       	ldd	r30, Y+1	; 0x01
+ 67a:	fa 81       	ldd	r31, Y+2	; 0x02
+ 67c:	87 81       	ldd	r24, Z+7	; 0x07
+ 67e:	90 85       	ldd	r25, Z+8	; 0x08
+ 680:	11 96       	adiw	r26, 0x01	; 1
+ 682:	9c 93       	st	X, r25
+ 684:	8e 93       	st	-X, r24
+			ICR1   = ((Config_Ptr->top_count));
+ 686:	a6 e4       	ldi	r26, 0x46	; 70
+ 688:	b0 e0       	ldi	r27, 0x00	; 0
+ 68a:	e9 81       	ldd	r30, Y+1	; 0x01
+ 68c:	fa 81       	ldd	r31, Y+2	; 0x02
+ 68e:	81 85       	ldd	r24, Z+9	; 0x09
+ 690:	92 85       	ldd	r25, Z+10	; 0x0a
+ 692:	11 96       	adiw	r26, 0x01	; 1
+ 694:	9c 93       	st	X, r25
+ 696:	8e 93       	st	-X, r24
+			if(Config_Ptr->interrupt){
+ 698:	e9 81       	ldd	r30, Y+1	; 0x01
+ 69a:	fa 81       	ldd	r31, Y+2	; 0x02
+ 69c:	83 85       	ldd	r24, Z+11	; 0x0b
+ 69e:	88 23       	and	r24, r24
+ 6a0:	39 f0       	breq	.+14     	; 0x6b0 <TIMER1_init+0x1aa>
+				/* Enable interrupt for compare mode channel B */
+				TIMSK |= (1 << OCIE1B);
+ 6a2:	a9 e5       	ldi	r26, 0x59	; 89
+ 6a4:	b0 e0       	ldi	r27, 0x00	; 0
+ 6a6:	e9 e5       	ldi	r30, 0x59	; 89
+ 6a8:	f0 e0       	ldi	r31, 0x00	; 0
+ 6aa:	80 81       	ld	r24, Z
+ 6ac:	88 60       	ori	r24, 0x08	; 8
+ 6ae:	8c 93       	st	X, r24
+			}
+			/* Choose the operation that should be done in compare match occurs in channel B */
+			TCCR1A = ( ( TCCR1A & 0xCF ) | ( (Config_Ptr -> compare_output) << COM1B0) );
+ 6b0:	af e4       	ldi	r26, 0x4F	; 79
+ 6b2:	b0 e0       	ldi	r27, 0x00	; 0
+ 6b4:	ef e4       	ldi	r30, 0x4F	; 79
+ 6b6:	f0 e0       	ldi	r31, 0x00	; 0
+ 6b8:	80 81       	ld	r24, Z
+ 6ba:	28 2f       	mov	r18, r24
+ 6bc:	2f 7c       	andi	r18, 0xCF	; 207
+ 6be:	e9 81       	ldd	r30, Y+1	; 0x01
+ 6c0:	fa 81       	ldd	r31, Y+2	; 0x02
+ 6c2:	82 81       	ldd	r24, Z+2	; 0x02
+ 6c4:	88 2f       	mov	r24, r24
+ 6c6:	90 e0       	ldi	r25, 0x00	; 0
+ 6c8:	82 95       	swap	r24
+ 6ca:	92 95       	swap	r25
+ 6cc:	90 7f       	andi	r25, 0xF0	; 240
+ 6ce:	98 27       	eor	r25, r24
+ 6d0:	80 7f       	andi	r24, 0xF0	; 240
+ 6d2:	98 27       	eor	r25, r24
+ 6d4:	82 2b       	or	r24, r18
+ 6d6:	8c 93       	st	X, r24
+			/*configure the mode of the timer*/
+			TCCR1A = ( ( TCCR1A & 0xFC ) | ( (Config_Ptr -> PWM) << WGM10 ) );
+ 6d8:	af e4       	ldi	r26, 0x4F	; 79
+ 6da:	b0 e0       	ldi	r27, 0x00	; 0
+ 6dc:	ef e4       	ldi	r30, 0x4F	; 79
+ 6de:	f0 e0       	ldi	r31, 0x00	; 0
+ 6e0:	80 81       	ld	r24, Z
+ 6e2:	98 2f       	mov	r25, r24
+ 6e4:	9c 7f       	andi	r25, 0xFC	; 252
+ 6e6:	e9 81       	ldd	r30, Y+1	; 0x01
+ 6e8:	fa 81       	ldd	r31, Y+2	; 0x02
+ 6ea:	83 81       	ldd	r24, Z+3	; 0x03
+ 6ec:	89 2b       	or	r24, r25
+ 6ee:	8c 93       	st	X, r24
+			TCCR1B = ( ( TCCR1B & 0xE7 ) | ( (Config_Ptr -> mode)<< WGM12 ) );
+ 6f0:	ae e4       	ldi	r26, 0x4E	; 78
+ 6f2:	b0 e0       	ldi	r27, 0x00	; 0
+ 6f4:	ee e4       	ldi	r30, 0x4E	; 78
+ 6f6:	f0 e0       	ldi	r31, 0x00	; 0
+ 6f8:	80 81       	ld	r24, Z
+ 6fa:	28 2f       	mov	r18, r24
+ 6fc:	27 7e       	andi	r18, 0xE7	; 231
+ 6fe:	e9 81       	ldd	r30, Y+1	; 0x01
+ 700:	fa 81       	ldd	r31, Y+2	; 0x02
+ 702:	81 81       	ldd	r24, Z+1	; 0x01
+ 704:	88 2f       	mov	r24, r24
+ 706:	90 e0       	ldi	r25, 0x00	; 0
+ 708:	88 0f       	add	r24, r24
+ 70a:	99 1f       	adc	r25, r25
+ 70c:	88 0f       	add	r24, r24
+ 70e:	99 1f       	adc	r25, r25
+ 710:	88 0f       	add	r24, r24
+ 712:	99 1f       	adc	r25, r25
+ 714:	82 2b       	or	r24, r18
+ 716:	8c 93       	st	X, r24
+		}
 	}
 
-	/*configure the mode of the timer*/
-	TCCR1B = ( ( TCCR1B & 0xE7 ) |  ( ( (Config_Ptr -> mode) >> 1) << WGM12)  );
- 608:	ae e4       	ldi	r26, 0x4E	; 78
- 60a:	b0 e0       	ldi	r27, 0x00	; 0
- 60c:	ee e4       	ldi	r30, 0x4E	; 78
- 60e:	f0 e0       	ldi	r31, 0x00	; 0
- 610:	80 81       	ld	r24, Z
- 612:	28 2f       	mov	r18, r24
- 614:	27 7e       	andi	r18, 0xE7	; 231
- 616:	e9 81       	ldd	r30, Y+1	; 0x01
- 618:	fa 81       	ldd	r31, Y+2	; 0x02
- 61a:	81 81       	ldd	r24, Z+1	; 0x01
- 61c:	86 95       	lsr	r24
- 61e:	88 2f       	mov	r24, r24
- 620:	90 e0       	ldi	r25, 0x00	; 0
- 622:	88 0f       	add	r24, r24
- 624:	99 1f       	adc	r25, r25
- 626:	88 0f       	add	r24, r24
- 628:	99 1f       	adc	r25, r25
- 62a:	88 0f       	add	r24, r24
- 62c:	99 1f       	adc	r25, r25
- 62e:	82 2b       	or	r24, r18
- 630:	8c 93       	st	X, r24
+	TCCR1B = ( ( TCCR1B & 0xE7 ) | ( (Config_Ptr -> mode)<< WGM12 ) );
+ 718:	ae e4       	ldi	r26, 0x4E	; 78
+ 71a:	b0 e0       	ldi	r27, 0x00	; 0
+ 71c:	ee e4       	ldi	r30, 0x4E	; 78
+ 71e:	f0 e0       	ldi	r31, 0x00	; 0
+ 720:	80 81       	ld	r24, Z
+ 722:	28 2f       	mov	r18, r24
+ 724:	27 7e       	andi	r18, 0xE7	; 231
+ 726:	e9 81       	ldd	r30, Y+1	; 0x01
+ 728:	fa 81       	ldd	r31, Y+2	; 0x02
+ 72a:	81 81       	ldd	r24, Z+1	; 0x01
+ 72c:	88 2f       	mov	r24, r24
+ 72e:	90 e0       	ldi	r25, 0x00	; 0
+ 730:	88 0f       	add	r24, r24
+ 732:	99 1f       	adc	r25, r25
+ 734:	88 0f       	add	r24, r24
+ 736:	99 1f       	adc	r25, r25
+ 738:	88 0f       	add	r24, r24
+ 73a:	99 1f       	adc	r25, r25
+ 73c:	82 2b       	or	r24, r18
+ 73e:	8c 93       	st	X, r24
 		/* choose the timer clock (F_CPU / prescaler)*/
 	TCCR1B = ( ( TCCR1B & 0xF8 ) | (Config_Ptr -> clock) );
- 632:	ae e4       	ldi	r26, 0x4E	; 78
- 634:	b0 e0       	ldi	r27, 0x00	; 0
- 636:	ee e4       	ldi	r30, 0x4E	; 78
- 638:	f0 e0       	ldi	r31, 0x00	; 0
- 63a:	80 81       	ld	r24, Z
- 63c:	98 2f       	mov	r25, r24
- 63e:	98 7f       	andi	r25, 0xF8	; 248
- 640:	e9 81       	ldd	r30, Y+1	; 0x01
- 642:	fa 81       	ldd	r31, Y+2	; 0x02
- 644:	80 81       	ld	r24, Z
- 646:	89 2b       	or	r24, r25
- 648:	8c 93       	st	X, r24
+ 740:	ae e4       	ldi	r26, 0x4E	; 78
+ 742:	b0 e0       	ldi	r27, 0x00	; 0
+ 744:	ee e4       	ldi	r30, 0x4E	; 78
+ 746:	f0 e0       	ldi	r31, 0x00	; 0
+ 748:	80 81       	ld	r24, Z
+ 74a:	98 2f       	mov	r25, r24
+ 74c:	98 7f       	andi	r25, 0xF8	; 248
+ 74e:	e9 81       	ldd	r30, Y+1	; 0x01
+ 750:	fa 81       	ldd	r31, Y+2	; 0x02
+ 752:	80 81       	ld	r24, Z
+ 754:	89 2b       	or	r24, r25
+ 756:	8c 93       	st	X, r24
 }
- 64a:	0f 90       	pop	r0
- 64c:	0f 90       	pop	r0
- 64e:	cf 91       	pop	r28
- 650:	df 91       	pop	r29
- 652:	08 95       	ret
+ 758:	0f 90       	pop	r0
+ 75a:	0f 90       	pop	r0
+ 75c:	cf 91       	pop	r28
+ 75e:	df 91       	pop	r29
+ 760:	08 95       	ret
 
-00000654 <TIMER2_init>:
+00000762 <TIMER2_init>:
 
 void TIMER2_init(const Timer_ConfigType * Config_Ptr)
 {
- 654:	df 93       	push	r29
- 656:	cf 93       	push	r28
- 658:	00 d0       	rcall	.+0      	; 0x65a <TIMER2_init+0x6>
- 65a:	cd b7       	in	r28, 0x3d	; 61
- 65c:	de b7       	in	r29, 0x3e	; 62
- 65e:	9a 83       	std	Y+2, r25	; 0x02
- 660:	89 83       	std	Y+1, r24	; 0x01
+ 762:	df 93       	push	r29
+ 764:	cf 93       	push	r28
+ 766:	00 d0       	rcall	.+0      	; 0x768 <TIMER2_init+0x6>
+ 768:	cd b7       	in	r28, 0x3d	; 61
+ 76a:	de b7       	in	r29, 0x3e	; 62
+ 76c:	9a 83       	std	Y+2, r25	; 0x02
+ 76e:	89 83       	std	Y+1, r24	; 0x01
 	/* Clear Registers before do anything */
 /*	TCCR2 &= 0x00;
 	TCNT2 &= 0x00;
 */
 	/*set the initail value of the timer*/
 	TCNT2 = Config_Ptr->initial;
- 662:	a4 e4       	ldi	r26, 0x44	; 68
- 664:	b0 e0       	ldi	r27, 0x00	; 0
- 666:	e9 81       	ldd	r30, Y+1	; 0x01
- 668:	fa 81       	ldd	r31, Y+2	; 0x02
- 66a:	84 81       	ldd	r24, Z+4	; 0x04
- 66c:	95 81       	ldd	r25, Z+5	; 0x05
- 66e:	8c 93       	st	X, r24
+ 770:	a4 e4       	ldi	r26, 0x44	; 68
+ 772:	b0 e0       	ldi	r27, 0x00	; 0
+ 774:	e9 81       	ldd	r30, Y+1	; 0x01
+ 776:	fa 81       	ldd	r31, Y+2	; 0x02
+ 778:	85 81       	ldd	r24, Z+5	; 0x05
+ 77a:	96 81       	ldd	r25, Z+6	; 0x06
+ 77c:	8c 93       	st	X, r24
 	/*set the compare value of the compare mode timer*/
 	OCR2 = Config_Ptr->compare_value;
- 670:	a3 e4       	ldi	r26, 0x43	; 67
- 672:	b0 e0       	ldi	r27, 0x00	; 0
- 674:	e9 81       	ldd	r30, Y+1	; 0x01
- 676:	fa 81       	ldd	r31, Y+2	; 0x02
- 678:	86 81       	ldd	r24, Z+6	; 0x06
- 67a:	97 81       	ldd	r25, Z+7	; 0x07
- 67c:	8c 93       	st	X, r24
+ 77e:	a3 e4       	ldi	r26, 0x43	; 67
+ 780:	b0 e0       	ldi	r27, 0x00	; 0
+ 782:	e9 81       	ldd	r30, Y+1	; 0x01
+ 784:	fa 81       	ldd	r31, Y+2	; 0x02
+ 786:	87 81       	ldd	r24, Z+7	; 0x07
+ 788:	90 85       	ldd	r25, Z+8	; 0x08
+ 78a:	8c 93       	st	X, r24
 	/*non PWM mode*/
 	TCCR2 = (1<<FOC2);
- 67e:	e5 e4       	ldi	r30, 0x45	; 69
- 680:	f0 e0       	ldi	r31, 0x00	; 0
- 682:	80 e8       	ldi	r24, 0x80	; 128
- 684:	80 83       	st	Z, r24
+ 78c:	e5 e4       	ldi	r30, 0x45	; 69
+ 78e:	f0 e0       	ldi	r31, 0x00	; 0
+ 790:	80 e8       	ldi	r24, 0x80	; 128
+ 792:	80 83       	st	Z, r24
 
 	/* Check which timer mode is chosen */
 	if( (Config_Ptr -> mode ) == NORMAL_MODE) {
- 686:	e9 81       	ldd	r30, Y+1	; 0x01
- 688:	fa 81       	ldd	r31, Y+2	; 0x02
- 68a:	81 81       	ldd	r24, Z+1	; 0x01
- 68c:	88 23       	and	r24, r24
- 68e:	41 f4       	brne	.+16     	; 0x6a0 <TIMER2_init+0x4c>
+ 794:	e9 81       	ldd	r30, Y+1	; 0x01
+ 796:	fa 81       	ldd	r31, Y+2	; 0x02
+ 798:	81 81       	ldd	r24, Z+1	; 0x01
+ 79a:	88 23       	and	r24, r24
+ 79c:	41 f4       	brne	.+16     	; 0x7ae <TIMER2_init+0x4c>
 	/*	Enable interrupt for normal mode */
 		TIMSK |= (1 << TOIE2);
- 690:	a9 e5       	ldi	r26, 0x59	; 89
- 692:	b0 e0       	ldi	r27, 0x00	; 0
- 694:	e9 e5       	ldi	r30, 0x59	; 89
- 696:	f0 e0       	ldi	r31, 0x00	; 0
- 698:	80 81       	ld	r24, Z
- 69a:	80 64       	ori	r24, 0x40	; 64
- 69c:	8c 93       	st	X, r24
- 69e:	0c c0       	rjmp	.+24     	; 0x6b8 <TIMER2_init+0x64>
+ 79e:	a9 e5       	ldi	r26, 0x59	; 89
+ 7a0:	b0 e0       	ldi	r27, 0x00	; 0
+ 7a2:	e9 e5       	ldi	r30, 0x59	; 89
+ 7a4:	f0 e0       	ldi	r31, 0x00	; 0
+ 7a6:	80 81       	ld	r24, Z
+ 7a8:	80 64       	ori	r24, 0x40	; 64
+ 7aa:	8c 93       	st	X, r24
+ 7ac:	0c c0       	rjmp	.+24     	; 0x7c6 <TIMER2_init+0x64>
 	}
 	else if ( (Config_Ptr -> mode) == CTC_MODE){
- 6a0:	e9 81       	ldd	r30, Y+1	; 0x01
- 6a2:	fa 81       	ldd	r31, Y+2	; 0x02
- 6a4:	81 81       	ldd	r24, Z+1	; 0x01
- 6a6:	81 30       	cpi	r24, 0x01	; 1
- 6a8:	39 f4       	brne	.+14     	; 0x6b8 <TIMER2_init+0x64>
+ 7ae:	e9 81       	ldd	r30, Y+1	; 0x01
+ 7b0:	fa 81       	ldd	r31, Y+2	; 0x02
+ 7b2:	81 81       	ldd	r24, Z+1	; 0x01
+ 7b4:	81 30       	cpi	r24, 0x01	; 1
+ 7b6:	39 f4       	brne	.+14     	; 0x7c6 <TIMER2_init+0x64>
 
 		/*	 Enable interrupt for compare mode */
 		TIMSK |= (1 << OCIE2);
- 6aa:	a9 e5       	ldi	r26, 0x59	; 89
- 6ac:	b0 e0       	ldi	r27, 0x00	; 0
- 6ae:	e9 e5       	ldi	r30, 0x59	; 89
- 6b0:	f0 e0       	ldi	r31, 0x00	; 0
- 6b2:	80 81       	ld	r24, Z
- 6b4:	80 68       	ori	r24, 0x80	; 128
- 6b6:	8c 93       	st	X, r24
+ 7b8:	a9 e5       	ldi	r26, 0x59	; 89
+ 7ba:	b0 e0       	ldi	r27, 0x00	; 0
+ 7bc:	e9 e5       	ldi	r30, 0x59	; 89
+ 7be:	f0 e0       	ldi	r31, 0x00	; 0
+ 7c0:	80 81       	ld	r24, Z
+ 7c2:	80 68       	ori	r24, 0x80	; 128
+ 7c4:	8c 93       	st	X, r24
 	}
 	/*configure the mode of the timer*/
 	TCCR2 = (TCCR2 & 0XB7) | ((Config_Ptr->mode & 0X48)<< WGM20);
- 6b8:	a5 e4       	ldi	r26, 0x45	; 69
- 6ba:	b0 e0       	ldi	r27, 0x00	; 0
- 6bc:	e5 e4       	ldi	r30, 0x45	; 69
- 6be:	f0 e0       	ldi	r31, 0x00	; 0
- 6c0:	80 81       	ld	r24, Z
- 6c2:	28 2f       	mov	r18, r24
- 6c4:	27 7b       	andi	r18, 0xB7	; 183
- 6c6:	e9 81       	ldd	r30, Y+1	; 0x01
- 6c8:	fa 81       	ldd	r31, Y+2	; 0x02
- 6ca:	81 81       	ldd	r24, Z+1	; 0x01
- 6cc:	88 2f       	mov	r24, r24
- 6ce:	90 e0       	ldi	r25, 0x00	; 0
- 6d0:	88 74       	andi	r24, 0x48	; 72
- 6d2:	90 70       	andi	r25, 0x00	; 0
- 6d4:	00 24       	eor	r0, r0
- 6d6:	96 95       	lsr	r25
- 6d8:	87 95       	ror	r24
- 6da:	07 94       	ror	r0
- 6dc:	96 95       	lsr	r25
- 6de:	87 95       	ror	r24
- 6e0:	07 94       	ror	r0
- 6e2:	98 2f       	mov	r25, r24
- 6e4:	80 2d       	mov	r24, r0
- 6e6:	82 2b       	or	r24, r18
- 6e8:	8c 93       	st	X, r24
+ 7c6:	a5 e4       	ldi	r26, 0x45	; 69
+ 7c8:	b0 e0       	ldi	r27, 0x00	; 0
+ 7ca:	e5 e4       	ldi	r30, 0x45	; 69
+ 7cc:	f0 e0       	ldi	r31, 0x00	; 0
+ 7ce:	80 81       	ld	r24, Z
+ 7d0:	28 2f       	mov	r18, r24
+ 7d2:	27 7b       	andi	r18, 0xB7	; 183
+ 7d4:	e9 81       	ldd	r30, Y+1	; 0x01
+ 7d6:	fa 81       	ldd	r31, Y+2	; 0x02
+ 7d8:	81 81       	ldd	r24, Z+1	; 0x01
+ 7da:	88 2f       	mov	r24, r24
+ 7dc:	90 e0       	ldi	r25, 0x00	; 0
+ 7de:	88 74       	andi	r24, 0x48	; 72
+ 7e0:	90 70       	andi	r25, 0x00	; 0
+ 7e2:	00 24       	eor	r0, r0
+ 7e4:	96 95       	lsr	r25
+ 7e6:	87 95       	ror	r24
+ 7e8:	07 94       	ror	r0
+ 7ea:	96 95       	lsr	r25
+ 7ec:	87 95       	ror	r24
+ 7ee:	07 94       	ror	r0
+ 7f0:	98 2f       	mov	r25, r24
+ 7f2:	80 2d       	mov	r24, r0
+ 7f4:	82 2b       	or	r24, r18
+ 7f6:	8c 93       	st	X, r24
 	/* Choose the operation that should be done in compare match occurs*/
 	TCCR2 = (TCCR2 & 0XCF) | ((Config_Ptr->compare_output & 0X03)<<COM20);
- 6ea:	a5 e4       	ldi	r26, 0x45	; 69
- 6ec:	b0 e0       	ldi	r27, 0x00	; 0
- 6ee:	e5 e4       	ldi	r30, 0x45	; 69
- 6f0:	f0 e0       	ldi	r31, 0x00	; 0
- 6f2:	80 81       	ld	r24, Z
- 6f4:	28 2f       	mov	r18, r24
- 6f6:	2f 7c       	andi	r18, 0xCF	; 207
- 6f8:	e9 81       	ldd	r30, Y+1	; 0x01
- 6fa:	fa 81       	ldd	r31, Y+2	; 0x02
- 6fc:	82 81       	ldd	r24, Z+2	; 0x02
- 6fe:	88 2f       	mov	r24, r24
- 700:	90 e0       	ldi	r25, 0x00	; 0
- 702:	83 70       	andi	r24, 0x03	; 3
- 704:	90 70       	andi	r25, 0x00	; 0
- 706:	82 95       	swap	r24
- 708:	92 95       	swap	r25
- 70a:	90 7f       	andi	r25, 0xF0	; 240
- 70c:	98 27       	eor	r25, r24
- 70e:	80 7f       	andi	r24, 0xF0	; 240
- 710:	98 27       	eor	r25, r24
- 712:	82 2b       	or	r24, r18
- 714:	8c 93       	st	X, r24
+ 7f8:	a5 e4       	ldi	r26, 0x45	; 69
+ 7fa:	b0 e0       	ldi	r27, 0x00	; 0
+ 7fc:	e5 e4       	ldi	r30, 0x45	; 69
+ 7fe:	f0 e0       	ldi	r31, 0x00	; 0
+ 800:	80 81       	ld	r24, Z
+ 802:	28 2f       	mov	r18, r24
+ 804:	2f 7c       	andi	r18, 0xCF	; 207
+ 806:	e9 81       	ldd	r30, Y+1	; 0x01
+ 808:	fa 81       	ldd	r31, Y+2	; 0x02
+ 80a:	82 81       	ldd	r24, Z+2	; 0x02
+ 80c:	88 2f       	mov	r24, r24
+ 80e:	90 e0       	ldi	r25, 0x00	; 0
+ 810:	83 70       	andi	r24, 0x03	; 3
+ 812:	90 70       	andi	r25, 0x00	; 0
+ 814:	82 95       	swap	r24
+ 816:	92 95       	swap	r25
+ 818:	90 7f       	andi	r25, 0xF0	; 240
+ 81a:	98 27       	eor	r25, r24
+ 81c:	80 7f       	andi	r24, 0xF0	; 240
+ 81e:	98 27       	eor	r25, r24
+ 820:	82 2b       	or	r24, r18
+ 822:	8c 93       	st	X, r24
 	/* choose the timer clock (F_CPU / prescaler)*/
 	TCCR2 = (TCCR2 & 0XF8) | (Config_Ptr->clock & 0X07);
- 716:	a5 e4       	ldi	r26, 0x45	; 69
- 718:	b0 e0       	ldi	r27, 0x00	; 0
- 71a:	e5 e4       	ldi	r30, 0x45	; 69
- 71c:	f0 e0       	ldi	r31, 0x00	; 0
- 71e:	80 81       	ld	r24, Z
- 720:	98 2f       	mov	r25, r24
- 722:	98 7f       	andi	r25, 0xF8	; 248
- 724:	e9 81       	ldd	r30, Y+1	; 0x01
- 726:	fa 81       	ldd	r31, Y+2	; 0x02
- 728:	80 81       	ld	r24, Z
- 72a:	87 70       	andi	r24, 0x07	; 7
- 72c:	89 2b       	or	r24, r25
- 72e:	8c 93       	st	X, r24
+ 824:	a5 e4       	ldi	r26, 0x45	; 69
+ 826:	b0 e0       	ldi	r27, 0x00	; 0
+ 828:	e5 e4       	ldi	r30, 0x45	; 69
+ 82a:	f0 e0       	ldi	r31, 0x00	; 0
+ 82c:	80 81       	ld	r24, Z
+ 82e:	98 2f       	mov	r25, r24
+ 830:	98 7f       	andi	r25, 0xF8	; 248
+ 832:	e9 81       	ldd	r30, Y+1	; 0x01
+ 834:	fa 81       	ldd	r31, Y+2	; 0x02
+ 836:	80 81       	ld	r24, Z
+ 838:	87 70       	andi	r24, 0x07	; 7
+ 83a:	89 2b       	or	r24, r25
+ 83c:	8c 93       	st	X, r24
 }
- 730:	0f 90       	pop	r0
- 732:	0f 90       	pop	r0
- 734:	cf 91       	pop	r28
- 736:	df 91       	pop	r29
- 738:	08 95       	ret
+ 83e:	0f 90       	pop	r0
+ 840:	0f 90       	pop	r0
+ 842:	cf 91       	pop	r28
+ 844:	df 91       	pop	r29
+ 846:	08 95       	ret
 
-0000073a <Timer0_Stop>:
+00000848 <Timer0_Stop>:
 
 void Timer0_Stop()
 {
- 73a:	df 93       	push	r29
- 73c:	cf 93       	push	r28
- 73e:	cd b7       	in	r28, 0x3d	; 61
- 740:	de b7       	in	r29, 0x3e	; 62
+ 848:	df 93       	push	r29
+ 84a:	cf 93       	push	r28
+ 84c:	cd b7       	in	r28, 0x3d	; 61
+ 84e:	de b7       	in	r29, 0x3e	; 62
 	TCCR0 &= 0b11111000; // stop the clock
- 742:	a3 e5       	ldi	r26, 0x53	; 83
- 744:	b0 e0       	ldi	r27, 0x00	; 0
- 746:	e3 e5       	ldi	r30, 0x53	; 83
- 748:	f0 e0       	ldi	r31, 0x00	; 0
- 74a:	80 81       	ld	r24, Z
- 74c:	88 7f       	andi	r24, 0xF8	; 248
- 74e:	8c 93       	st	X, r24
+ 850:	a3 e5       	ldi	r26, 0x53	; 83
+ 852:	b0 e0       	ldi	r27, 0x00	; 0
+ 854:	e3 e5       	ldi	r30, 0x53	; 83
+ 856:	f0 e0       	ldi	r31, 0x00	; 0
+ 858:	80 81       	ld	r24, Z
+ 85a:	88 7f       	andi	r24, 0xF8	; 248
+ 85c:	8c 93       	st	X, r24
 }
- 750:	cf 91       	pop	r28
- 752:	df 91       	pop	r29
- 754:	08 95       	ret
+ 85e:	cf 91       	pop	r28
+ 860:	df 91       	pop	r29
+ 862:	08 95       	ret
 
-00000756 <Timer1_Stop>:
+00000864 <Timer1_Stop>:
 
 void Timer1_Stop(){
- 756:	df 93       	push	r29
- 758:	cf 93       	push	r28
- 75a:	cd b7       	in	r28, 0x3d	; 61
- 75c:	de b7       	in	r29, 0x3e	; 62
+ 864:	df 93       	push	r29
+ 866:	cf 93       	push	r28
+ 868:	cd b7       	in	r28, 0x3d	; 61
+ 86a:	de b7       	in	r29, 0x3e	; 62
 	TCCR1B &= 0b11111000; // stop the clock
- 75e:	ae e4       	ldi	r26, 0x4E	; 78
- 760:	b0 e0       	ldi	r27, 0x00	; 0
- 762:	ee e4       	ldi	r30, 0x4E	; 78
- 764:	f0 e0       	ldi	r31, 0x00	; 0
- 766:	80 81       	ld	r24, Z
- 768:	88 7f       	andi	r24, 0xF8	; 248
- 76a:	8c 93       	st	X, r24
+ 86c:	ae e4       	ldi	r26, 0x4E	; 78
+ 86e:	b0 e0       	ldi	r27, 0x00	; 0
+ 870:	ee e4       	ldi	r30, 0x4E	; 78
+ 872:	f0 e0       	ldi	r31, 0x00	; 0
+ 874:	80 81       	ld	r24, Z
+ 876:	88 7f       	andi	r24, 0xF8	; 248
+ 878:	8c 93       	st	X, r24
 }
- 76c:	cf 91       	pop	r28
- 76e:	df 91       	pop	r29
- 770:	08 95       	ret
+ 87a:	cf 91       	pop	r28
+ 87c:	df 91       	pop	r29
+ 87e:	08 95       	ret
 
-00000772 <Timer2_Stop>:
+00000880 <Timer2_Stop>:
 
 void Timer2_Stop(){
- 772:	df 93       	push	r29
- 774:	cf 93       	push	r28
- 776:	cd b7       	in	r28, 0x3d	; 61
- 778:	de b7       	in	r29, 0x3e	; 62
+ 880:	df 93       	push	r29
+ 882:	cf 93       	push	r28
+ 884:	cd b7       	in	r28, 0x3d	; 61
+ 886:	de b7       	in	r29, 0x3e	; 62
 	TCCR2 &= 0b11111000; // stop the clock
- 77a:	a5 e4       	ldi	r26, 0x45	; 69
- 77c:	b0 e0       	ldi	r27, 0x00	; 0
- 77e:	e5 e4       	ldi	r30, 0x45	; 69
- 780:	f0 e0       	ldi	r31, 0x00	; 0
- 782:	80 81       	ld	r24, Z
- 784:	88 7f       	andi	r24, 0xF8	; 248
- 786:	8c 93       	st	X, r24
+ 888:	a5 e4       	ldi	r26, 0x45	; 69
+ 88a:	b0 e0       	ldi	r27, 0x00	; 0
+ 88c:	e5 e4       	ldi	r30, 0x45	; 69
+ 88e:	f0 e0       	ldi	r31, 0x00	; 0
+ 890:	80 81       	ld	r24, Z
+ 892:	88 7f       	andi	r24, 0xF8	; 248
+ 894:	8c 93       	st	X, r24
 }
- 788:	cf 91       	pop	r28
- 78a:	df 91       	pop	r29
- 78c:	08 95       	ret
+ 896:	cf 91       	pop	r28
+ 898:	df 91       	pop	r29
+ 89a:	08 95       	ret
 
-0000078e <Timer0_setCallBack>:
+0000089c <Timer0_setCallBack>:
 
 
 
 void Timer0_setCallBack(void(*a_ptr)(void))
 {
- 78e:	df 93       	push	r29
- 790:	cf 93       	push	r28
- 792:	00 d0       	rcall	.+0      	; 0x794 <Timer0_setCallBack+0x6>
- 794:	cd b7       	in	r28, 0x3d	; 61
- 796:	de b7       	in	r29, 0x3e	; 62
- 798:	9a 83       	std	Y+2, r25	; 0x02
- 79a:	89 83       	std	Y+1, r24	; 0x01
+ 89c:	df 93       	push	r29
+ 89e:	cf 93       	push	r28
+ 8a0:	00 d0       	rcall	.+0      	; 0x8a2 <Timer0_setCallBack+0x6>
+ 8a2:	cd b7       	in	r28, 0x3d	; 61
+ 8a4:	de b7       	in	r29, 0x3e	; 62
+ 8a6:	9a 83       	std	Y+2, r25	; 0x02
+ 8a8:	89 83       	std	Y+1, r24	; 0x01
 	/* Save the address of the Call back function in a global variable */
 	timer0_callBackPtr = a_ptr;
- 79c:	89 81       	ldd	r24, Y+1	; 0x01
- 79e:	9a 81       	ldd	r25, Y+2	; 0x02
- 7a0:	90 93 63 00 	sts	0x0063, r25
- 7a4:	80 93 62 00 	sts	0x0062, r24
+ 8aa:	89 81       	ldd	r24, Y+1	; 0x01
+ 8ac:	9a 81       	ldd	r25, Y+2	; 0x02
+ 8ae:	90 93 61 00 	sts	0x0061, r25
+ 8b2:	80 93 60 00 	sts	0x0060, r24
 }
- 7a8:	0f 90       	pop	r0
- 7aa:	0f 90       	pop	r0
- 7ac:	cf 91       	pop	r28
- 7ae:	df 91       	pop	r29
- 7b0:	08 95       	ret
+ 8b6:	0f 90       	pop	r0
+ 8b8:	0f 90       	pop	r0
+ 8ba:	cf 91       	pop	r28
+ 8bc:	df 91       	pop	r29
+ 8be:	08 95       	ret
 
-000007b2 <Timer1_setCallBack>:
+000008c0 <Timer1_setCallBack>:
 void Timer1_setCallBack(void(*a_ptr)(void))
 {
- 7b2:	df 93       	push	r29
- 7b4:	cf 93       	push	r28
- 7b6:	00 d0       	rcall	.+0      	; 0x7b8 <Timer1_setCallBack+0x6>
- 7b8:	cd b7       	in	r28, 0x3d	; 61
- 7ba:	de b7       	in	r29, 0x3e	; 62
- 7bc:	9a 83       	std	Y+2, r25	; 0x02
- 7be:	89 83       	std	Y+1, r24	; 0x01
+ 8c0:	df 93       	push	r29
+ 8c2:	cf 93       	push	r28
+ 8c4:	00 d0       	rcall	.+0      	; 0x8c6 <Timer1_setCallBack+0x6>
+ 8c6:	cd b7       	in	r28, 0x3d	; 61
+ 8c8:	de b7       	in	r29, 0x3e	; 62
+ 8ca:	9a 83       	std	Y+2, r25	; 0x02
+ 8cc:	89 83       	std	Y+1, r24	; 0x01
 	/* Save the address of the Call back function in a global variable */
 	timer1_callBackPtr = a_ptr;
- 7c0:	89 81       	ldd	r24, Y+1	; 0x01
- 7c2:	9a 81       	ldd	r25, Y+2	; 0x02
- 7c4:	90 93 65 00 	sts	0x0065, r25
- 7c8:	80 93 64 00 	sts	0x0064, r24
+ 8ce:	89 81       	ldd	r24, Y+1	; 0x01
+ 8d0:	9a 81       	ldd	r25, Y+2	; 0x02
+ 8d2:	90 93 63 00 	sts	0x0063, r25
+ 8d6:	80 93 62 00 	sts	0x0062, r24
 }
- 7cc:	0f 90       	pop	r0
- 7ce:	0f 90       	pop	r0
- 7d0:	cf 91       	pop	r28
- 7d2:	df 91       	pop	r29
- 7d4:	08 95       	ret
+ 8da:	0f 90       	pop	r0
+ 8dc:	0f 90       	pop	r0
+ 8de:	cf 91       	pop	r28
+ 8e0:	df 91       	pop	r29
+ 8e2:	08 95       	ret
 
-000007d6 <Timer2_setCallBack>:
+000008e4 <Timer2_setCallBack>:
 void Timer2_setCallBack(void(*a_ptr)(void))
 {
- 7d6:	df 93       	push	r29
- 7d8:	cf 93       	push	r28
- 7da:	00 d0       	rcall	.+0      	; 0x7dc <Timer2_setCallBack+0x6>
- 7dc:	cd b7       	in	r28, 0x3d	; 61
- 7de:	de b7       	in	r29, 0x3e	; 62
- 7e0:	9a 83       	std	Y+2, r25	; 0x02
- 7e2:	89 83       	std	Y+1, r24	; 0x01
+ 8e4:	df 93       	push	r29
+ 8e6:	cf 93       	push	r28
+ 8e8:	00 d0       	rcall	.+0      	; 0x8ea <Timer2_setCallBack+0x6>
+ 8ea:	cd b7       	in	r28, 0x3d	; 61
+ 8ec:	de b7       	in	r29, 0x3e	; 62
+ 8ee:	9a 83       	std	Y+2, r25	; 0x02
+ 8f0:	89 83       	std	Y+1, r24	; 0x01
 	/* Save the address of the Call back function in a global variable */
 	timer2_callBackPtr = a_ptr;
- 7e4:	89 81       	ldd	r24, Y+1	; 0x01
- 7e6:	9a 81       	ldd	r25, Y+2	; 0x02
- 7e8:	90 93 67 00 	sts	0x0067, r25
- 7ec:	80 93 66 00 	sts	0x0066, r24
+ 8f2:	89 81       	ldd	r24, Y+1	; 0x01
+ 8f4:	9a 81       	ldd	r25, Y+2	; 0x02
+ 8f6:	90 93 65 00 	sts	0x0065, r25
+ 8fa:	80 93 64 00 	sts	0x0064, r24
 }
- 7f0:	0f 90       	pop	r0
- 7f2:	0f 90       	pop	r0
- 7f4:	cf 91       	pop	r28
- 7f6:	df 91       	pop	r29
- 7f8:	08 95       	ret
+ 8fe:	0f 90       	pop	r0
+ 900:	0f 90       	pop	r0
+ 902:	cf 91       	pop	r28
+ 904:	df 91       	pop	r29
+ 906:	08 95       	ret
 
-000007fa <_exit>:
- 7fa:	f8 94       	cli
+00000908 <_exit>:
+ 908:	f8 94       	cli
 
-000007fc <__stop_program>:
- 7fc:	ff cf       	rjmp	.-2      	; 0x7fc <__stop_program>
+0000090a <__stop_program>:
+ 90a:	ff cf       	rjmp	.-2      	; 0x90a <__stop_program>

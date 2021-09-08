@@ -1,10 +1,10 @@
-main.o main.o: ../main.c ../timer.h ../std_types.h ../common_macros.h \
-  ../registers.h
+main.o main.o: ../main.c ../timer.h ../registers.h ../std_types.h \
+  ../common_macros.h
 
 ../timer.h:
+
+../registers.h:
 
 ../std_types.h:
 
 ../common_macros.h:
-
-../registers.h:

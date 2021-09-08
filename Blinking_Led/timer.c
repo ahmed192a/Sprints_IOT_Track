@@ -6,13 +6,12 @@
  *
  * Description: Source file for the timer driver
  *
- * Author: Ahmed Mohamed
+ * Author: ah132
  *
  *******************************************************************************/
 
 #include "timer.h"
-#include "avr/interrupt.h"
-#include "avr/io.h"
+#include <avr/interrupt.h>
 
 /*******************************************************************************
  *                           Global Variables                                  *
@@ -104,13 +103,14 @@ void TIMER0_init(const Timer_ConfigType * Config_Ptr)
 	TCCR0 = (1<<FOC0);
 	/*set initial value */
 	TCNT0 = Config_Ptr->initial;
+
 	/*set compare value for compare mode*/
 	OCR0 = Config_Ptr->compare_value;
 
 
 	if((Config_Ptr->OutputPin) == OC0){
 		// configure the output pin PB3 in compare mode
-		DDRB |= (1 << OC0);
+		PORTD_DIR |= (1 << OC0);
 	}
 
 	if( (Config_Ptr -> mode ) == NORMAL_MODE) {
@@ -143,46 +143,77 @@ void TIMER1_init(const Timer_ConfigType * Config_Ptr)
 */
 	/*set the initial value*/
 	TCNT1 = ( (Config_Ptr -> initial) );
-	/*  Non PWM Mode */
-	TCCR1A = (1 << FOC1A) | (1 << FOC1B) ;
-	if((Config_Ptr -> OutputPin) == OC1A){
-	// configure the output pin PD5 in compare mode
-		DDRD |= (1 << OC1A);
-	}
 
-	/* Check for OC1B */
-	else if ((Config_Ptr -> OutputPin) == OC1B){
-		// configure the output pin PD4 in compare mode
-		DDRD |= (1 << OC1B);
-	}
-	if( (Config_Ptr->mode ) == NORMAL_MODE)
+	if( (Config_Ptr->mode ) == NORMAL_MODE )
 	{
-		/* Enable interrupt FOR normal mode */
-		TIMSK |= (1 << TOIE1);
-	}
-	else if ((Config_Ptr->mode) == CTC_MODE_CHANNEL_A)
-	{
-		/*set compare value for compare mode channel A*/
-		OCR1A  = ((Config_Ptr->compare_value));
-		/* Enable interrupt for compare mode channel A */
-		TIMSK |= (1 << OCIE1A);
-		/* Choose the operation that should be done in compare match occurs in channel A */
-		TCCR1A = ( (TCCR1A & 0x3F) | ( (Config_Ptr -> compare_output) << COM1A0) );
-	}
+		/*  Non PWM Mode */
+		TCCR1A = (1 << FOC1A) | (1 << FOC1B) ;
 
-	else if ( (Config_Ptr->mode) == CTC_MODE_CHANNEL_B){
-		/*set compare value for compare mode channel B*/
-		OCR1B  = ((Config_Ptr -> compare_value));
-
-		/* Enable interrupt for compare mode channel B */
-		TIMSK |= (1 << OCIE1B);
-		/* Choose the operation that should be done in compare match occurs in channel B */
-		TCCR1A = ( (TCCR1A & 0xCF) | ( (Config_Ptr -> compare_output) << COM1B0) );
+		if(Config_Ptr->interrupt){
+			/* Enable interrupt FOR normal mode */
+			TIMSK |= (1 << TOIE1);
+		}
 
 	}
+	else if((Config_Ptr->mode ) == CTC_MODE){
+		/*  Non PWM Mode */
+		TCCR1A = (1 << FOC1A) | (1 << FOC1B) ;
 
-	/*configure the mode of the timer*/
-	TCCR1B = ( ( TCCR1B & 0xE7 ) |  ( ( (Config_Ptr -> mode) >> 1) << WGM12)  );
+		if(Config_Ptr->interrupt){
+			/* Enable interrupt FOR normal mode */
+			TIMSK |= (1 << OCIE1A);
+		}
+		OCR1A    = ((Config_Ptr->top_count));
+	}
+	else{
+//		if((Config_Ptr -> OutputPin) == OC1A){
+//		// configure the output pin PD5 in compare mode
+//			PORTD_DIR |= (1 << OC1A);
+//		}
+//		/* Check for OC1B */
+//		else if ((Config_Ptr -> OutputPin) == OC1B){
+//			// configure the output pin PD4 in compare mode
+//			PORTD_DIR |= (1 << OC1B);
+//		}
+		if ((Config_Ptr->channel) == CHANNEL_A)
+		{
+			// configure the output pin PD5 in compare mode
+				PORTD_DIR |= (1 << OC1A);
+
+			/*set compare value for compare mode channel A*/
+			OCR1A  = ((Config_Ptr->compare_value));
+			ICR1   = ((Config_Ptr->top_count));
+			if(Config_Ptr->interrupt){
+				/* Enable interrupt for compare mode channel A */
+				TIMSK |= (1 << OCIE1A);
+			}
+			/* Choose the operation that should be done in compare match occurs in channel A */
+			TCCR1A = ( ( TCCR1A & 0x3F ) | ( (Config_Ptr -> compare_output) << COM1A0) );
+			TCCR1A = ( ( TCCR1A & 0xFC ) | ( (Config_Ptr -> PWM) << WGM10 ) );
+			TCCR1B = ( ( TCCR1B & 0xE7 ) | ( (Config_Ptr -> mode)<< WGM12 ) );
+
+		}
+
+		else if ( (Config_Ptr->channel) == CHANNEL_B){
+			// configure the output pin PD4 in compare mode
+			PORTD_DIR |= (1 << OC1B);
+
+			/*set compare value for compare mode channel B*/
+			OCR1B  = ((Config_Ptr -> compare_value));
+			ICR1   = ((Config_Ptr->top_count));
+			if(Config_Ptr->interrupt){
+				/* Enable interrupt for compare mode channel B */
+				TIMSK |= (1 << OCIE1B);
+			}
+			/* Choose the operation that should be done in compare match occurs in channel B */
+			TCCR1A = ( ( TCCR1A & 0xCF ) | ( (Config_Ptr -> compare_output) << COM1B0) );
+			/*configure the mode of the timer*/
+			TCCR1A = ( ( TCCR1A & 0xFC ) | ( (Config_Ptr -> PWM) << WGM10 ) );
+			TCCR1B = ( ( TCCR1B & 0xE7 ) | ( (Config_Ptr -> mode)<< WGM12 ) );
+		}
+	}
+
+	TCCR1B = ( ( TCCR1B & 0xE7 ) | ( (Config_Ptr -> mode)<< WGM12 ) );
 		/* choose the timer clock (F_CPU / prescaler)*/
 	TCCR1B = ( ( TCCR1B & 0xF8 ) | (Config_Ptr -> clock) );
 }

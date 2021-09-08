@@ -9,18 +9,10 @@
  * Author: ah132
  *
  *******************************************************************************/
-
 #ifndef TIMER_H_
 #define TIMER_H_
 
-#include "std_types.h"
-#include "common_macros.h"
 #include "registers.h"
-
-#define PB3		P3
-#define PD4		P4
-#define PD5		P5
-#define PD7		P7
 
 /*******************************************************************************
  *                         Types Declaration                                   *
@@ -34,18 +26,21 @@ typedef enum
 {
 	NORMAL_MODE,
 	CTC_MODE,
-	CTC_MODE_CHANNEL_A,
-	CTC_MODE_CHANNEL_B
+	PWM_PHASE,
+	PWM_FAST,
 }Timer_Mode;
 
-
+typedef enum{
+	CHANNEL_A,
+	CHANNEL_B
+}Channel;
 typedef enum{
 
 	NONE,
-	OC0  = PB3,
-	OC1B = PD4,
-	OC1A = PD5,
-	OC2  = PD7
+	OC0  = 3,
+	OC1B = 4,
+	OC1A = 5,
+	OC2  = 7
 
 }Timer_OutputComparePinsType;
 
@@ -55,17 +50,25 @@ typedef enum
 }C_Output_Mode;
 
 
+typedef enum{
+	PWM_0,
+	PWM_1,
+	PWM_2,
+	PWM_3
+}PWM_Type;
+
 typedef struct
 {
 	Timer_Clock clock;
 	Timer_Mode mode;
 	C_Output_Mode compare_output;
+	PWM_Type PWM;
 	Timer_OutputComparePinsType OutputPin;
 	uint16_t initial;
 	uint16_t compare_value ;
-
-
-
+	uint16_t top_count;
+	bool interrupt;
+	Channel channel;
 }Timer_ConfigType;
 
 

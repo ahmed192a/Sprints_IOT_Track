@@ -1,0 +1,584 @@
+
+DIO_Project.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000398  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000006  00800060  00800060  0000040c  2**0
+                  ALLOC
+  2 .stab         00000c0c  00000000  00000000  0000040c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000840  00000000  00000000  00001018  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	a6 36       	cpi	r26, 0x66	; 102
+  6c:	b1 07       	cpc	r27, r17
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 bf 01 	call	0x37e	; 0x37e <main>
+  74:	0c 94 ca 01 	jmp	0x394	; 0x394 <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <Port_Init>:
+
+
+/************************************************************************
+  	  	  	  	  	  	  	  Function Definitions
+ ***********************************************************************/
+void Port_Init(PORT_Config_t * Port){
+  7c:	df 93       	push	r29
+  7e:	cf 93       	push	r28
+  80:	00 d0       	rcall	.+0      	; 0x82 <Port_Init+0x6>
+  82:	00 d0       	rcall	.+0      	; 0x84 <Port_Init+0x8>
+  84:	cd b7       	in	r28, 0x3d	; 61
+  86:	de b7       	in	r29, 0x3e	; 62
+  88:	9a 83       	std	Y+2, r25	; 0x02
+  8a:	89 83       	std	Y+1, r24	; 0x01
+	switch(Port->port){
+  8c:	e9 81       	ldd	r30, Y+1	; 0x01
+  8e:	fa 81       	ldd	r31, Y+2	; 0x02
+  90:	82 81       	ldd	r24, Z+2	; 0x02
+  92:	28 2f       	mov	r18, r24
+  94:	30 e0       	ldi	r19, 0x00	; 0
+  96:	3c 83       	std	Y+4, r19	; 0x04
+  98:	2b 83       	std	Y+3, r18	; 0x03
+  9a:	8b 81       	ldd	r24, Y+3	; 0x03
+  9c:	9c 81       	ldd	r25, Y+4	; 0x04
+  9e:	81 30       	cpi	r24, 0x01	; 1
+  a0:	91 05       	cpc	r25, r1
+  a2:	f1 f0       	breq	.+60     	; 0xe0 <Port_Init+0x64>
+  a4:	2b 81       	ldd	r18, Y+3	; 0x03
+  a6:	3c 81       	ldd	r19, Y+4	; 0x04
+  a8:	22 30       	cpi	r18, 0x02	; 2
+  aa:	31 05       	cpc	r19, r1
+  ac:	2c f4       	brge	.+10     	; 0xb8 <Port_Init+0x3c>
+  ae:	8b 81       	ldd	r24, Y+3	; 0x03
+  b0:	9c 81       	ldd	r25, Y+4	; 0x04
+  b2:	00 97       	sbiw	r24, 0x00	; 0
+  b4:	61 f0       	breq	.+24     	; 0xce <Port_Init+0x52>
+  b6:	2e c0       	rjmp	.+92     	; 0x114 <Port_Init+0x98>
+  b8:	2b 81       	ldd	r18, Y+3	; 0x03
+  ba:	3c 81       	ldd	r19, Y+4	; 0x04
+  bc:	22 30       	cpi	r18, 0x02	; 2
+  be:	31 05       	cpc	r19, r1
+  c0:	c1 f0       	breq	.+48     	; 0xf2 <Port_Init+0x76>
+  c2:	8b 81       	ldd	r24, Y+3	; 0x03
+  c4:	9c 81       	ldd	r25, Y+4	; 0x04
+  c6:	83 30       	cpi	r24, 0x03	; 3
+  c8:	91 05       	cpc	r25, r1
+  ca:	e1 f0       	breq	.+56     	; 0x104 <Port_Init+0x88>
+  cc:	23 c0       	rjmp	.+70     	; 0x114 <Port_Init+0x98>
+	case A:
+		PORTA_DIR = Port->direction;
+  ce:	ea e3       	ldi	r30, 0x3A	; 58
+  d0:	f0 e0       	ldi	r31, 0x00	; 0
+  d2:	a9 81       	ldd	r26, Y+1	; 0x01
+  d4:	ba 81       	ldd	r27, Y+2	; 0x02
+  d6:	11 96       	adiw	r26, 0x01	; 1
+  d8:	8c 91       	ld	r24, X
+  da:	11 97       	sbiw	r26, 0x01	; 1
+  dc:	80 83       	st	Z, r24
+  de:	1a c0       	rjmp	.+52     	; 0x114 <Port_Init+0x98>
+		break;
+	case B:
+		PORTB_DIR = Port->direction;
+  e0:	e7 e3       	ldi	r30, 0x37	; 55
+  e2:	f0 e0       	ldi	r31, 0x00	; 0
+  e4:	a9 81       	ldd	r26, Y+1	; 0x01
+  e6:	ba 81       	ldd	r27, Y+2	; 0x02
+  e8:	11 96       	adiw	r26, 0x01	; 1
+  ea:	8c 91       	ld	r24, X
+  ec:	11 97       	sbiw	r26, 0x01	; 1
+  ee:	80 83       	st	Z, r24
+  f0:	11 c0       	rjmp	.+34     	; 0x114 <Port_Init+0x98>
+		break;
+	case C:
+		PORTC_DIR = Port->direction;
+  f2:	e4 e3       	ldi	r30, 0x34	; 52
+  f4:	f0 e0       	ldi	r31, 0x00	; 0
+  f6:	a9 81       	ldd	r26, Y+1	; 0x01
+  f8:	ba 81       	ldd	r27, Y+2	; 0x02
+  fa:	11 96       	adiw	r26, 0x01	; 1
+  fc:	8c 91       	ld	r24, X
+  fe:	11 97       	sbiw	r26, 0x01	; 1
+ 100:	80 83       	st	Z, r24
+ 102:	08 c0       	rjmp	.+16     	; 0x114 <Port_Init+0x98>
+		break;
+	case D:
+		PORTD_DIR = Port->direction;
+ 104:	e1 e3       	ldi	r30, 0x31	; 49
+ 106:	f0 e0       	ldi	r31, 0x00	; 0
+ 108:	a9 81       	ldd	r26, Y+1	; 0x01
+ 10a:	ba 81       	ldd	r27, Y+2	; 0x02
+ 10c:	11 96       	adiw	r26, 0x01	; 1
+ 10e:	8c 91       	ld	r24, X
+ 110:	11 97       	sbiw	r26, 0x01	; 1
+ 112:	80 83       	st	Z, r24
+		break;
+	}
+}
+ 114:	0f 90       	pop	r0
+ 116:	0f 90       	pop	r0
+ 118:	0f 90       	pop	r0
+ 11a:	0f 90       	pop	r0
+ 11c:	cf 91       	pop	r28
+ 11e:	df 91       	pop	r29
+ 120:	08 95       	ret
+
+00000122 <Write_Port>:
+
+void Write_Port(PORT_Config_t *Port){
+ 122:	df 93       	push	r29
+ 124:	cf 93       	push	r28
+ 126:	00 d0       	rcall	.+0      	; 0x128 <Write_Port+0x6>
+ 128:	00 d0       	rcall	.+0      	; 0x12a <Write_Port+0x8>
+ 12a:	cd b7       	in	r28, 0x3d	; 61
+ 12c:	de b7       	in	r29, 0x3e	; 62
+ 12e:	9a 83       	std	Y+2, r25	; 0x02
+ 130:	89 83       	std	Y+1, r24	; 0x01
+	switch(Port->port){
+ 132:	e9 81       	ldd	r30, Y+1	; 0x01
+ 134:	fa 81       	ldd	r31, Y+2	; 0x02
+ 136:	82 81       	ldd	r24, Z+2	; 0x02
+ 138:	28 2f       	mov	r18, r24
+ 13a:	30 e0       	ldi	r19, 0x00	; 0
+ 13c:	3c 83       	std	Y+4, r19	; 0x04
+ 13e:	2b 83       	std	Y+3, r18	; 0x03
+ 140:	8b 81       	ldd	r24, Y+3	; 0x03
+ 142:	9c 81       	ldd	r25, Y+4	; 0x04
+ 144:	81 30       	cpi	r24, 0x01	; 1
+ 146:	91 05       	cpc	r25, r1
+ 148:	e1 f0       	breq	.+56     	; 0x182 <Write_Port+0x60>
+ 14a:	2b 81       	ldd	r18, Y+3	; 0x03
+ 14c:	3c 81       	ldd	r19, Y+4	; 0x04
+ 14e:	22 30       	cpi	r18, 0x02	; 2
+ 150:	31 05       	cpc	r19, r1
+ 152:	2c f4       	brge	.+10     	; 0x15e <Write_Port+0x3c>
+ 154:	8b 81       	ldd	r24, Y+3	; 0x03
+ 156:	9c 81       	ldd	r25, Y+4	; 0x04
+ 158:	00 97       	sbiw	r24, 0x00	; 0
+ 15a:	61 f0       	breq	.+24     	; 0x174 <Write_Port+0x52>
+ 15c:	26 c0       	rjmp	.+76     	; 0x1aa <Write_Port+0x88>
+ 15e:	2b 81       	ldd	r18, Y+3	; 0x03
+ 160:	3c 81       	ldd	r19, Y+4	; 0x04
+ 162:	22 30       	cpi	r18, 0x02	; 2
+ 164:	31 05       	cpc	r19, r1
+ 166:	a1 f0       	breq	.+40     	; 0x190 <Write_Port+0x6e>
+ 168:	8b 81       	ldd	r24, Y+3	; 0x03
+ 16a:	9c 81       	ldd	r25, Y+4	; 0x04
+ 16c:	83 30       	cpi	r24, 0x03	; 3
+ 16e:	91 05       	cpc	r25, r1
+ 170:	b1 f0       	breq	.+44     	; 0x19e <Write_Port+0x7c>
+ 172:	1b c0       	rjmp	.+54     	; 0x1aa <Write_Port+0x88>
+	case A:
+		PORTA_OUT = Port->Data;
+ 174:	eb e3       	ldi	r30, 0x3B	; 59
+ 176:	f0 e0       	ldi	r31, 0x00	; 0
+ 178:	a9 81       	ldd	r26, Y+1	; 0x01
+ 17a:	ba 81       	ldd	r27, Y+2	; 0x02
+ 17c:	8c 91       	ld	r24, X
+ 17e:	80 83       	st	Z, r24
+ 180:	14 c0       	rjmp	.+40     	; 0x1aa <Write_Port+0x88>
+		break;
+	case B:
+		PORTB_OUT = Port->Data;
+ 182:	e8 e3       	ldi	r30, 0x38	; 56
+ 184:	f0 e0       	ldi	r31, 0x00	; 0
+ 186:	a9 81       	ldd	r26, Y+1	; 0x01
+ 188:	ba 81       	ldd	r27, Y+2	; 0x02
+ 18a:	8c 91       	ld	r24, X
+ 18c:	80 83       	st	Z, r24
+ 18e:	0d c0       	rjmp	.+26     	; 0x1aa <Write_Port+0x88>
+		break;
+	case C:
+		PORTC_OUT = Port->Data;
+ 190:	e5 e3       	ldi	r30, 0x35	; 53
+ 192:	f0 e0       	ldi	r31, 0x00	; 0
+ 194:	a9 81       	ldd	r26, Y+1	; 0x01
+ 196:	ba 81       	ldd	r27, Y+2	; 0x02
+ 198:	8c 91       	ld	r24, X
+ 19a:	80 83       	st	Z, r24
+ 19c:	06 c0       	rjmp	.+12     	; 0x1aa <Write_Port+0x88>
+		break;
+	case D:
+		PORTD_OUT = Port->Data;
+ 19e:	e2 e3       	ldi	r30, 0x32	; 50
+ 1a0:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a2:	a9 81       	ldd	r26, Y+1	; 0x01
+ 1a4:	ba 81       	ldd	r27, Y+2	; 0x02
+ 1a6:	8c 91       	ld	r24, X
+ 1a8:	80 83       	st	Z, r24
+		break;
+	}
+}
+ 1aa:	0f 90       	pop	r0
+ 1ac:	0f 90       	pop	r0
+ 1ae:	0f 90       	pop	r0
+ 1b0:	0f 90       	pop	r0
+ 1b2:	cf 91       	pop	r28
+ 1b4:	df 91       	pop	r29
+ 1b6:	08 95       	ret
+
+000001b8 <Read_Port>:
+
+void Read_Port(PORT_Config_t *Port){
+ 1b8:	df 93       	push	r29
+ 1ba:	cf 93       	push	r28
+ 1bc:	00 d0       	rcall	.+0      	; 0x1be <Read_Port+0x6>
+ 1be:	00 d0       	rcall	.+0      	; 0x1c0 <Read_Port+0x8>
+ 1c0:	cd b7       	in	r28, 0x3d	; 61
+ 1c2:	de b7       	in	r29, 0x3e	; 62
+ 1c4:	9a 83       	std	Y+2, r25	; 0x02
+ 1c6:	89 83       	std	Y+1, r24	; 0x01
+	switch(Port->port){
+ 1c8:	e9 81       	ldd	r30, Y+1	; 0x01
+ 1ca:	fa 81       	ldd	r31, Y+2	; 0x02
+ 1cc:	82 81       	ldd	r24, Z+2	; 0x02
+ 1ce:	28 2f       	mov	r18, r24
+ 1d0:	30 e0       	ldi	r19, 0x00	; 0
+ 1d2:	3c 83       	std	Y+4, r19	; 0x04
+ 1d4:	2b 83       	std	Y+3, r18	; 0x03
+ 1d6:	8b 81       	ldd	r24, Y+3	; 0x03
+ 1d8:	9c 81       	ldd	r25, Y+4	; 0x04
+ 1da:	81 30       	cpi	r24, 0x01	; 1
+ 1dc:	91 05       	cpc	r25, r1
+ 1de:	e1 f0       	breq	.+56     	; 0x218 <Read_Port+0x60>
+ 1e0:	2b 81       	ldd	r18, Y+3	; 0x03
+ 1e2:	3c 81       	ldd	r19, Y+4	; 0x04
+ 1e4:	22 30       	cpi	r18, 0x02	; 2
+ 1e6:	31 05       	cpc	r19, r1
+ 1e8:	2c f4       	brge	.+10     	; 0x1f4 <Read_Port+0x3c>
+ 1ea:	8b 81       	ldd	r24, Y+3	; 0x03
+ 1ec:	9c 81       	ldd	r25, Y+4	; 0x04
+ 1ee:	00 97       	sbiw	r24, 0x00	; 0
+ 1f0:	61 f0       	breq	.+24     	; 0x20a <Read_Port+0x52>
+ 1f2:	26 c0       	rjmp	.+76     	; 0x240 <Read_Port+0x88>
+ 1f4:	2b 81       	ldd	r18, Y+3	; 0x03
+ 1f6:	3c 81       	ldd	r19, Y+4	; 0x04
+ 1f8:	22 30       	cpi	r18, 0x02	; 2
+ 1fa:	31 05       	cpc	r19, r1
+ 1fc:	a1 f0       	breq	.+40     	; 0x226 <Read_Port+0x6e>
+ 1fe:	8b 81       	ldd	r24, Y+3	; 0x03
+ 200:	9c 81       	ldd	r25, Y+4	; 0x04
+ 202:	83 30       	cpi	r24, 0x03	; 3
+ 204:	91 05       	cpc	r25, r1
+ 206:	b1 f0       	breq	.+44     	; 0x234 <Read_Port+0x7c>
+ 208:	1b c0       	rjmp	.+54     	; 0x240 <Read_Port+0x88>
+	case A:
+		Port->Data= PORTA_IN;
+ 20a:	e9 e3       	ldi	r30, 0x39	; 57
+ 20c:	f0 e0       	ldi	r31, 0x00	; 0
+ 20e:	80 81       	ld	r24, Z
+ 210:	e9 81       	ldd	r30, Y+1	; 0x01
+ 212:	fa 81       	ldd	r31, Y+2	; 0x02
+ 214:	80 83       	st	Z, r24
+ 216:	14 c0       	rjmp	.+40     	; 0x240 <Read_Port+0x88>
+		break;
+	case B:
+		Port->Data= PORTB_IN;
+ 218:	e6 e3       	ldi	r30, 0x36	; 54
+ 21a:	f0 e0       	ldi	r31, 0x00	; 0
+ 21c:	80 81       	ld	r24, Z
+ 21e:	e9 81       	ldd	r30, Y+1	; 0x01
+ 220:	fa 81       	ldd	r31, Y+2	; 0x02
+ 222:	80 83       	st	Z, r24
+ 224:	0d c0       	rjmp	.+26     	; 0x240 <Read_Port+0x88>
+		break;
+	case C:
+		Port->Data= PORTC_IN;
+ 226:	e3 e3       	ldi	r30, 0x33	; 51
+ 228:	f0 e0       	ldi	r31, 0x00	; 0
+ 22a:	80 81       	ld	r24, Z
+ 22c:	e9 81       	ldd	r30, Y+1	; 0x01
+ 22e:	fa 81       	ldd	r31, Y+2	; 0x02
+ 230:	80 83       	st	Z, r24
+ 232:	06 c0       	rjmp	.+12     	; 0x240 <Read_Port+0x88>
+		break;
+	case D:
+		Port->Data= PORTD_IN;
+ 234:	e0 e3       	ldi	r30, 0x30	; 48
+ 236:	f0 e0       	ldi	r31, 0x00	; 0
+ 238:	80 81       	ld	r24, Z
+ 23a:	e9 81       	ldd	r30, Y+1	; 0x01
+ 23c:	fa 81       	ldd	r31, Y+2	; 0x02
+ 23e:	80 83       	st	Z, r24
+		break;
+	}
+}
+ 240:	0f 90       	pop	r0
+ 242:	0f 90       	pop	r0
+ 244:	0f 90       	pop	r0
+ 246:	0f 90       	pop	r0
+ 248:	cf 91       	pop	r28
+ 24a:	df 91       	pop	r29
+ 24c:	08 95       	ret
+
+0000024e <LED_Init>:
+
+
+/************************************************************************
+  	  	  	  	  	  	  	  Function Definitions
+ ***********************************************************************/
+void LED_Init(){
+ 24e:	df 93       	push	r29
+ 250:	cf 93       	push	r28
+ 252:	cd b7       	in	r28, 0x3d	; 61
+ 254:	de b7       	in	r29, 0x3e	; 62
+	Porta.port = A;
+ 256:	10 92 62 00 	sts	0x0062, r1
+	Porta.direction = LED;
+ 25a:	80 e1       	ldi	r24, 0x10	; 16
+ 25c:	80 93 61 00 	sts	0x0061, r24
+	Porta.Data &= ~LED;
+ 260:	80 91 60 00 	lds	r24, 0x0060
+ 264:	8f 7e       	andi	r24, 0xEF	; 239
+ 266:	80 93 60 00 	sts	0x0060, r24
+	Port_Init(&Porta);
+ 26a:	80 e6       	ldi	r24, 0x60	; 96
+ 26c:	90 e0       	ldi	r25, 0x00	; 0
+ 26e:	0e 94 3e 00 	call	0x7c	; 0x7c <Port_Init>
+	Write_Port(&Porta);
+ 272:	80 e6       	ldi	r24, 0x60	; 96
+ 274:	90 e0       	ldi	r25, 0x00	; 0
+ 276:	0e 94 91 00 	call	0x122	; 0x122 <Write_Port>
+}
+ 27a:	cf 91       	pop	r28
+ 27c:	df 91       	pop	r29
+ 27e:	08 95       	ret
+
+00000280 <LED_ON>:
+
+void LED_ON(){
+ 280:	df 93       	push	r29
+ 282:	cf 93       	push	r28
+ 284:	cd b7       	in	r28, 0x3d	; 61
+ 286:	de b7       	in	r29, 0x3e	; 62
+	Porta.Data |= LED;
+ 288:	80 91 60 00 	lds	r24, 0x0060
+ 28c:	80 61       	ori	r24, 0x10	; 16
+ 28e:	80 93 60 00 	sts	0x0060, r24
+	Write_Port(&Porta);
+ 292:	80 e6       	ldi	r24, 0x60	; 96
+ 294:	90 e0       	ldi	r25, 0x00	; 0
+ 296:	0e 94 91 00 	call	0x122	; 0x122 <Write_Port>
+}
+ 29a:	cf 91       	pop	r28
+ 29c:	df 91       	pop	r29
+ 29e:	08 95       	ret
+
+000002a0 <LED_OFF>:
+
+
+void LED_OFF(){
+ 2a0:	df 93       	push	r29
+ 2a2:	cf 93       	push	r28
+ 2a4:	cd b7       	in	r28, 0x3d	; 61
+ 2a6:	de b7       	in	r29, 0x3e	; 62
+	Porta.Data &= ~LED;
+ 2a8:	80 91 60 00 	lds	r24, 0x0060
+ 2ac:	8f 7e       	andi	r24, 0xEF	; 239
+ 2ae:	80 93 60 00 	sts	0x0060, r24
+	Write_Port(&Porta);
+ 2b2:	80 e6       	ldi	r24, 0x60	; 96
+ 2b4:	90 e0       	ldi	r25, 0x00	; 0
+ 2b6:	0e 94 91 00 	call	0x122	; 0x122 <Write_Port>
+}
+ 2ba:	cf 91       	pop	r28
+ 2bc:	df 91       	pop	r29
+ 2be:	08 95       	ret
+
+000002c0 <LED_Toggle>:
+
+void LED_Toggle(){
+ 2c0:	df 93       	push	r29
+ 2c2:	cf 93       	push	r28
+ 2c4:	cd b7       	in	r28, 0x3d	; 61
+ 2c6:	de b7       	in	r29, 0x3e	; 62
+	Porta.Data ^= LED;
+ 2c8:	90 91 60 00 	lds	r25, 0x0060
+ 2cc:	80 e1       	ldi	r24, 0x10	; 16
+ 2ce:	89 27       	eor	r24, r25
+ 2d0:	80 93 60 00 	sts	0x0060, r24
+	Write_Port(&Porta);
+ 2d4:	80 e6       	ldi	r24, 0x60	; 96
+ 2d6:	90 e0       	ldi	r25, 0x00	; 0
+ 2d8:	0e 94 91 00 	call	0x122	; 0x122 <Write_Port>
+}
+ 2dc:	cf 91       	pop	r28
+ 2de:	df 91       	pop	r29
+ 2e0:	08 95       	ret
+
+000002e2 <Button_Init>:
+
+/************************************************************************
+  	  	  	  	  	  	  	  Function Definitions
+ ***********************************************************************/
+
+void Button_Init(){
+ 2e2:	df 93       	push	r29
+ 2e4:	cf 93       	push	r28
+ 2e6:	cd b7       	in	r28, 0x3d	; 61
+ 2e8:	de b7       	in	r29, 0x3e	; 62
+	Portc.port = C;					// set port to PORT C
+ 2ea:	82 e0       	ldi	r24, 0x02	; 2
+ 2ec:	80 93 65 00 	sts	0x0065, r24
+	Portc.direction &= ~BUTTON1;	// set direction of PC0 to input
+ 2f0:	80 91 64 00 	lds	r24, 0x0064
+ 2f4:	8e 7f       	andi	r24, 0xFE	; 254
+ 2f6:	80 93 64 00 	sts	0x0064, r24
+	Port_Init(&Portc);				// initialize Port C
+ 2fa:	83 e6       	ldi	r24, 0x63	; 99
+ 2fc:	90 e0       	ldi	r25, 0x00	; 0
+ 2fe:	0e 94 3e 00 	call	0x7c	; 0x7c <Port_Init>
+}
+ 302:	cf 91       	pop	r28
+ 304:	df 91       	pop	r29
+ 306:	08 95       	ret
+
+00000308 <Check_Button>:
+
+
+
+uint8_t Check_Button(){
+ 308:	df 93       	push	r29
+ 30a:	cf 93       	push	r28
+ 30c:	cd b7       	in	r28, 0x3d	; 61
+ 30e:	de b7       	in	r29, 0x3e	; 62
+	Read_Port(&Portc);				// Read Value of PORT C
+ 310:	83 e6       	ldi	r24, 0x63	; 99
+ 312:	90 e0       	ldi	r25, 0x00	; 0
+ 314:	0e 94 dc 00 	call	0x1b8	; 0x1b8 <Read_Port>
+	return (Portc.Data&BUTTON1);	// return only the value of button after the mask
+ 318:	80 91 63 00 	lds	r24, 0x0063
+ 31c:	81 70       	andi	r24, 0x01	; 1
+}
+ 31e:	cf 91       	pop	r28
+ 320:	df 91       	pop	r29
+ 322:	08 95       	ret
+
+00000324 <APP>:
+#include "LED_Button_Project.h"
+
+/************************************************************************
+  	  	  	  	  	  	  	  Function Definitions
+ ***********************************************************************/
+void APP(){
+ 324:	df 93       	push	r29
+ 326:	cf 93       	push	r28
+ 328:	00 d0       	rcall	.+0      	; 0x32a <APP+0x6>
+ 32a:	00 d0       	rcall	.+0      	; 0x32c <APP+0x8>
+ 32c:	cd b7       	in	r28, 0x3d	; 61
+ 32e:	de b7       	in	r29, 0x3e	; 62
+	uint32_t i;							/* Variable used for counting in for loop to create delay */
+	LED_Init();							/* Initialize LED */
+ 330:	0e 94 27 01 	call	0x24e	; 0x24e <LED_Init>
+	Button_Init();						/* Initialize Button */
+ 334:	0e 94 71 01 	call	0x2e2	; 0x2e2 <Button_Init>
+	while(1){
+		if(Check_Button()){				/* check if the button is pressed */
+ 338:	0e 94 84 01 	call	0x308	; 0x308 <Check_Button>
+ 33c:	88 23       	and	r24, r24
+ 33e:	e1 f3       	breq	.-8      	; 0x338 <APP+0x14>
+			LED_Toggle();				/* toggles the led */
+ 340:	0e 94 60 01 	call	0x2c0	; 0x2c0 <LED_Toggle>
+			for(i=0; i<10000; i++);		/* Toggle the Led */
+ 344:	19 82       	std	Y+1, r1	; 0x01
+ 346:	1a 82       	std	Y+2, r1	; 0x02
+ 348:	1b 82       	std	Y+3, r1	; 0x03
+ 34a:	1c 82       	std	Y+4, r1	; 0x04
+ 34c:	0b c0       	rjmp	.+22     	; 0x364 <APP+0x40>
+ 34e:	89 81       	ldd	r24, Y+1	; 0x01
+ 350:	9a 81       	ldd	r25, Y+2	; 0x02
+ 352:	ab 81       	ldd	r26, Y+3	; 0x03
+ 354:	bc 81       	ldd	r27, Y+4	; 0x04
+ 356:	01 96       	adiw	r24, 0x01	; 1
+ 358:	a1 1d       	adc	r26, r1
+ 35a:	b1 1d       	adc	r27, r1
+ 35c:	89 83       	std	Y+1, r24	; 0x01
+ 35e:	9a 83       	std	Y+2, r25	; 0x02
+ 360:	ab 83       	std	Y+3, r26	; 0x03
+ 362:	bc 83       	std	Y+4, r27	; 0x04
+ 364:	89 81       	ldd	r24, Y+1	; 0x01
+ 366:	9a 81       	ldd	r25, Y+2	; 0x02
+ 368:	ab 81       	ldd	r26, Y+3	; 0x03
+ 36a:	bc 81       	ldd	r27, Y+4	; 0x04
+ 36c:	80 31       	cpi	r24, 0x10	; 16
+ 36e:	27 e2       	ldi	r18, 0x27	; 39
+ 370:	92 07       	cpc	r25, r18
+ 372:	20 e0       	ldi	r18, 0x00	; 0
+ 374:	a2 07       	cpc	r26, r18
+ 376:	20 e0       	ldi	r18, 0x00	; 0
+ 378:	b2 07       	cpc	r27, r18
+ 37a:	48 f3       	brcs	.-46     	; 0x34e <APP+0x2a>
+ 37c:	dd cf       	rjmp	.-70     	; 0x338 <APP+0x14>
+
+0000037e <main>:
+ *      Author: Ahmed Mohamed
+ */
+
+#include "APP/LED_Button_Project.h"
+
+int main(){
+ 37e:	df 93       	push	r29
+ 380:	cf 93       	push	r28
+ 382:	cd b7       	in	r28, 0x3d	; 61
+ 384:	de b7       	in	r29, 0x3e	; 62
+	APP();
+ 386:	0e 94 92 01 	call	0x324	; 0x324 <APP>
+ 38a:	80 e0       	ldi	r24, 0x00	; 0
+ 38c:	90 e0       	ldi	r25, 0x00	; 0
+}
+ 38e:	cf 91       	pop	r28
+ 390:	df 91       	pop	r29
+ 392:	08 95       	ret
+
+00000394 <_exit>:
+ 394:	f8 94       	cli
+
+00000396 <__stop_program>:
+ 396:	ff cf       	rjmp	.-2      	; 0x396 <__stop_program>

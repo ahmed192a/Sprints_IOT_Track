@@ -66,7 +66,8 @@
 #define WGM20		6
 #define FOC2		7
 #define COM20		4
-//#define TIFR		(*(volatile uint8_t *)(0x38))
+#define TIFR		(*(volatile uint8_t *)(0x38))
+#define OCF1A		4
 
 
 
