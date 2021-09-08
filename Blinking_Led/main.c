@@ -8,8 +8,8 @@
 #include "common_macros.h"
 
 // In CASE WE WANT USE INTERRUPT SET THE INTERRUPT MACRO TO 1
-#define INTERRUPT 		0
 
+#define INTERRUPT 		0
 #define LED				0x04
 void Timer1_INT();
 
@@ -31,16 +31,16 @@ int main(){
 
 #if INTERRUPT
 	timer1_Strut.mode				= CTC_MODE;
-	timer1_Strut.clock				= F_CPU_256;
+	timer1_Strut.clock				= F_CPU_1024;
 	timer1_Strut.initial			= 0;
-	timer1_Strut.top_count			= 2000;
+	timer1_Strut.top_count			= 500;
 	timer1_Strut.interrupt			= TRUE;
 
 #else
 	timer1_Strut.mode				= CTC_MODE;
 	timer1_Strut.clock				= F_CPU_1024;
 	timer1_Strut.initial			= 0;
-	timer1_Strut.top_count			= 100;
+	timer1_Strut.top_count			= 500;
 	timer1_Strut.interrupt			= FALSE;
 #endif
 
@@ -58,6 +58,10 @@ int main(){
 		while(!TIFR& (1<<OCF1A));
 		TIFR |= 1<<OCF1A;
 		TOGGLE_BIT(PORTA_OUT,LED);
+		timer1_Strut.initial			= 0;
+		timer1_Strut.top_count			= 500;
+		/* Timer 1 Initialization */
+		TIMER1_init(&timer1_Strut);
 #endif
 	}
 }
@@ -65,4 +69,8 @@ int main(){
 
 void Timer1_INT(){
 	TOGGLE_BIT(PORTA_OUT,LED);
+	timer1_Strut.initial			= 0;
+	timer1_Strut.top_count			= 500;
+	/* Timer 1 Initialization */
+	TIMER1_init(&timer1_Strut);
 }
