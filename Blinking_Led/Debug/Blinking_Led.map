@@ -120,7 +120,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x90c
+.text           0x00000000      0x964
  *(.vectors)
  .vectors       0x00000000       0x54 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -194,66 +194,66 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .text          0x0000007c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
                 0x0000007c                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x0000007c       0x6a ./main.o
+ .text.main     0x0000007c       0xaa ./main.o
                 0x0000007c                main
  .text.Timer1_INT
-                0x000000e6       0x5a ./main.o
-                0x000000e6                Timer1_INT
+                0x00000126       0x5a ./main.o
+                0x00000126                Timer1_INT
  .text.__vector_11
-                0x00000140       0x66 ./timer.o
-                0x00000140                __vector_11
+                0x00000180       0x66 ./timer.o
+                0x00000180                __vector_11
  .text.__vector_10
-                0x000001a6       0x66 ./timer.o
-                0x000001a6                __vector_10
+                0x000001e6       0x66 ./timer.o
+                0x000001e6                __vector_10
  .text.__vector_9
-                0x0000020c       0x66 ./timer.o
-                0x0000020c                __vector_9
+                0x0000024c       0x66 ./timer.o
+                0x0000024c                __vector_9
  .text.__vector_7
-                0x00000272       0x66 ./timer.o
-                0x00000272                __vector_7
+                0x000002b2       0x66 ./timer.o
+                0x000002b2                __vector_7
  .text.__vector_8
-                0x000002d8       0x66 ./timer.o
-                0x000002d8                __vector_8
+                0x00000318       0x66 ./timer.o
+                0x00000318                __vector_8
  .text.__vector_5
-                0x0000033e       0x66 ./timer.o
-                0x0000033e                __vector_5
+                0x0000037e       0x66 ./timer.o
+                0x0000037e                __vector_5
  .text.__vector_4
-                0x000003a4       0x66 ./timer.o
-                0x000003a4                __vector_4
+                0x000003e4       0x66 ./timer.o
+                0x000003e4                __vector_4
  .text.TIMER0_init
-                0x0000040a       0xfc ./timer.o
-                0x0000040a                TIMER0_init
+                0x0000044a       0xfc ./timer.o
+                0x0000044a                TIMER0_init
  .text.TIMER1_init
-                0x00000506      0x25c ./timer.o
-                0x00000506                TIMER1_init
+                0x00000546      0x274 ./timer.o
+                0x00000546                TIMER1_init
  .text.TIMER2_init
-                0x00000762       0xe6 ./timer.o
-                0x00000762                TIMER2_init
+                0x000007ba       0xe6 ./timer.o
+                0x000007ba                TIMER2_init
  .text.Timer0_Stop
-                0x00000848       0x1c ./timer.o
-                0x00000848                Timer0_Stop
+                0x000008a0       0x1c ./timer.o
+                0x000008a0                Timer0_Stop
  .text.Timer1_Stop
-                0x00000864       0x1c ./timer.o
-                0x00000864                Timer1_Stop
+                0x000008bc       0x1c ./timer.o
+                0x000008bc                Timer1_Stop
  .text.Timer2_Stop
-                0x00000880       0x1c ./timer.o
-                0x00000880                Timer2_Stop
+                0x000008d8       0x1c ./timer.o
+                0x000008d8                Timer2_Stop
  .text.Timer0_setCallBack
-                0x0000089c       0x24 ./timer.o
-                0x0000089c                Timer0_setCallBack
+                0x000008f4       0x24 ./timer.o
+                0x000008f4                Timer0_setCallBack
  .text.Timer1_setCallBack
-                0x000008c0       0x24 ./timer.o
-                0x000008c0                Timer1_setCallBack
+                0x00000918       0x24 ./timer.o
+                0x00000918                Timer1_setCallBack
  .text.Timer2_setCallBack
-                0x000008e4       0x24 ./timer.o
-                0x000008e4                Timer2_setCallBack
- .text.libgcc   0x00000908        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00000908        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
-                0x00000908                . = ALIGN (0x2)
+                0x0000093c       0x24 ./timer.o
+                0x0000093c                Timer2_setCallBack
+ .text.libgcc   0x00000960        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00000960        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00000960                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000908        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00000908                exit
-                0x00000908                _exit
+ .fini9         0x00000960        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00000960                exit
+                0x00000960                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -272,11 +272,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000908        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000960        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000090c                _etext = .
+                0x00000964                _etext = .
 
-.data           0x00800060        0x0 load address 0x0000090c
+.data           0x00800060        0x0 load address 0x00000964
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
@@ -311,8 +311,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  COMMON         0x00800066        0xd ./main.o
                 0x00800066                timer1_Strut
                 0x00800073                PROVIDE (__bss_end, .)
-                0x0000090c                __data_load_start = LOADADDR (.data)
-                0x0000090c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000964                __data_load_start = LOADADDR (.data)
+                0x00000964                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800073        0x0
                 0x00800073                PROVIDE (__noinit_start, .)
@@ -337,11 +337,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000      0xc6c
+.stab           0x00000000      0xc90
  *(.stab)
- .stab          0x00000000      0x510 ./main.o
- .stab          0x00000510      0x75c ./timer.o
-                                0xa2c (size before relaxing)
+ .stab          0x00000000      0x3a8 ./main.o
+ .stab          0x000003a8      0x8e8 ./timer.o
+                                0xa38 (size before relaxing)
 
 .stabstr        0x00000000      0xccd
  *(.stabstr)

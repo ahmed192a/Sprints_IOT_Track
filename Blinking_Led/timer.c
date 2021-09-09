@@ -212,7 +212,7 @@ void TIMER1_init(const Timer_ConfigType * Config_Ptr)
 			TCCR1B = ( ( TCCR1B & 0xE7 ) | ( (Config_Ptr -> mode)<< WGM12 ) );
 		}
 	}
-
+	TCCR1A = ( ( TCCR1A & 0xFC ) | ( (Config_Ptr -> PWM) << WGM10 ) );
 	TCCR1B = ( ( TCCR1B & 0xE7 ) | ( (Config_Ptr -> mode)<< WGM12 ) );
 		/* choose the timer clock (F_CPU / prescaler)*/
 	TCCR1B = ( ( TCCR1B & 0xF8 ) | (Config_Ptr -> clock) );
